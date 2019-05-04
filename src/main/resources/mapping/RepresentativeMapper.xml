@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.document.mapper.RepresentativeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.document.entity.Representative">
+        <id column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+        <result column="birth" property="birth" />
+        <result column="translate" property="translate" />
+        <result column="photo" property="photo" />
+        <result column="political_outlook" property="politicalOutlook" />
+        <result column="degree" property="degree" />
+        <result column="address" property="address" />
+        <result column="idcard" property="idcard" />
+        <result column="landline" property="landline" />
+        <result column="phone" property="phone" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
+        <result column="alias" property="alias" />
+    </resultMap>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMapRepresentativeDto" type="com.document.dto.RepresentativeDto">
+        <id column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+        <result column="birth" property="birth" />
+        <result column="translate" property="translate" />
+        <result column="photo" property="photo" />
+        <result column="political_outlook" property="politicalOutlook" />
+        <result column="degree" property="degree" />
+        <result column="address" property="address" />
+        <result column="idcard" property="idcard" />
+        <result column="landline" property="landline" />
+        <result column="phone" property="phone" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
+        <result column="alias" property="alias" />
+
+        <result column="typeInfoName" property="typeInfoName" />
+    </resultMap>
+
+    <select id="representativeList" parameterType="com.document.entity.Representative" resultMap="BaseResultMapRepresentativeDto">
+        select s.*,t.name as typeInfoName from
+        representative s,
+        type_info t
+        where 1=1
+        and
+        s.type_info_id=t.id and s.status=0
+        <if test="id!=null and id!=''">and  s.id=#{id}</if>
+        <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+        <if test="name!=null and name!=''">and s.name LIKE CONCAT('%',#{name},'%')</if>
+        <if test="alias!=null and alias!=''">and s.alias = #{alias}</if>
+    </select>
+
+</mapper>

@@ -1,0 +1,252 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/resources/css/login.css" media="all">
+    <title>用户管理</title>
+
+</head>
+
+<body>
+<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px">
+    <input type="hidden" name="id" id="id">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">所属分类</label>
+        <div class="layui-input-inline">
+            <select name="typeInfoId" id="typeInfoId" lay-verify="required">
+                <option value="">--请选择分类--</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">警告次数</label>
+        <div class="layui-input-inline">
+            <input type="text" name="warning" id="warning" required lay-verify="required" placeholder="请输入警告次数" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">警告时间</label>
+        <div class="layui-input-inline">
+            <input type="text" name="warningTime" id="warningTime" lay-verify="required" placeholder="请输入警告时间" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">罚款</label>
+        <div class="layui-input-inline">
+            <input type="text" name="fine" id="fine"  lay-verify="required|number" placeholder="请输入罚款" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">罚款时间</label>
+        <div class="layui-input-inline">
+            <input type="text" name="fineTime" id="fineTime"  lay-verify="required" placeholder="请选择罚款时间" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">责令停业整顿</label>
+        <div class="layui-input-inline">
+            <input type="text" name="rectify" id="rectify"  lay-verify="required" placeholder="请输入责令停业整顿" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">责令停业整顿时间</label>
+        <div class="layui-input-inline">
+            <input type="text" name="rectifyTime" id="rectifyTime"  lay-verify="required" placeholder="请选择责令停业整顿时间" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">吊销许可证时间</label>
+        <div class="layui-input-inline">
+            <input type="text" name="revocationPermitTime" id="revocationPermitTime"  lay-verify="required" placeholder="请选择吊销许可证时间" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">没收违法所得</label>
+        <div class="layui-input-inline">
+            <input type="text" name="confiscationIncome" id="confiscationIncome"  lay-verify="required" placeholder="请输入没收违法所得" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">没收违法所得时间</label>
+        <div class="layui-input-inline">
+            <input type="text" name="confiscationIncomeTime" id="confiscationIncomeTime"  lay-verify="required" placeholder="请选择没收违法所得时间" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">没收非法财物</label>
+        <div class="layui-input-inline">
+            <input type="text" name="confiscationProperty" id="confiscationProperty"  lay-verify="required" placeholder="请输入没收非法财物" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">没收非法财物时间</label>
+        <div class="layui-input-inline">
+            <input type="text" name="confiscationPropertyTime" id="confiscationPropertyTime"  lay-verify="required" placeholder="请选择没收非法财物时间" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</body>
+<script src="/resources/layui/layui.js" charset="utf-8"></script>
+<script>
+    var info = parent.preDate;
+    layui.use(['form', 'upload','laydate'], function() {
+        var form = layui.form;
+        var $ = layui.jquery;
+        var upload = layui.upload;
+        var laydate = layui.laydate;
+        //表单初始赋值
+        if (info != null){
+            form.val('form',{
+                "id":info.id
+                ,"warning":info.warning
+                ,"warningTime":info.warningTime
+                ,"fine":info.fine
+                ,"fineTime":info.fineTime
+                ,"rectify":info.rectify
+                ,"rectifyTime":info.rectifyTime
+                ,"revocationPermit":info.revocationPermit
+                ,"revocationPermitTime":info.revocationPermitTime
+                ,"confiscationIncome":info.confiscationIncome
+                ,"confiscationIncomeTime":info.confiscationIncomeTime
+                ,"confiscationProperty":info.confiscationProperty
+                ,"confiscationPropertyTime":info.confiscationPropertyTime
+            });
+            form.render();
+        }
+        if(info != null){
+            if (info.revocationPermit === "0") {
+                $("#revocationPermit").attr("checked",'checked')
+            }else {
+                $("#revocationPermit").removeAttr('checked')
+            }
+            form.render('select'); //刷新select选择框渲染
+        }
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#warningTime' //指定元素
+        }); //执行一个laydate实例
+        laydate.render({
+            elem: '#fineTime' //指定元素
+        });
+        laydate.render({
+            elem: '#rectifyTime' //指定元素
+        });
+        laydate.render({
+            elem: '#confiscationIncomeTime' //指定元素
+        });
+        laydate.render({
+            elem: '#revocationPermitTime' //指定元素
+        });
+        laydate.render({
+            elem: '#confiscationPropertyTime' //指定元素
+        });
+
+
+
+        $.ajax({
+            url:'/typeInfo/typeList',
+            type:'post',
+            data:{"page":1,"limit":99999999},
+            dataType:"json",
+            success:function(data){
+                var html = '';
+                if(data.code===0){
+                    $.each(data.data,function(index,value){
+                        html += '<option value="'+value.id+'">'+value.name+'</option>';
+                        //alert(html);
+                    });
+                    //alert(html);
+                    $('#typeInfoId').html(html);
+
+                    if (info != null &&info.typeInfoId != null){
+                        $('#typeInfoId').val(info.typeInfoId);
+                    }
+                    form.render('select');
+                } else {
+                    layer.alert('抱歉，系统繁忙，请稍后再试！',{icon:2});
+                }
+            },
+        });
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            if (data.field.id !== "" && data.field.id != null){
+                layer.confirm('是否确定修改？',{icon: 3, title:'系统信息'},function(index){
+                    $.ajax({
+                        url:'/document/punishment/saveOrEdit',
+                        type:'post',
+                        data:data.field,
+                        dataType:"json",
+                        beforeSend:function(){
+                            //console.log(JSON.stringify(data.field));
+                        },
+                        success:function(data){
+                            //do something
+                            if(data.code===0){
+                                var index = parent.layer.getFrameIndex(window.name);//获取当前窗口索引
+                                parent.layer.msg(data.msg, {icon : 1});
+                                parent.layer.close(index);
+                                parent.layui.table.reload('tableList');//重新加载父级tabel数据
+                            } else {
+                                layer.alert(data.msg,{icon:2});
+                            }
+                        },
+                        error:function(data){
+                            //do something
+                            layer.msg('与服务器连接失败',{icon: 2});
+                        }
+                    });
+                    layer.close(index);
+                });
+            }else {
+                layer.confirm('是否确定新增？',{icon: 3, title:'系统信息'},function(index){
+                    console.log("========"+data.field);
+                    $.ajax({
+                        url:'/document/punishment/saveOrEdit',
+                        type:'post',
+                        data:data.field,
+                        dataType:"json",
+                        beforeSend:function(){
+                            //console.log(JSON.stringify(data.field));
+                        },
+                        success:function(data){
+                            //do something
+                            if(data.code===0){
+                                var index = parent.layer.getFrameIndex(window.name);//获取当前窗口索引
+                                parent.layer.msg(data.msg, {icon : 1});
+                                parent.layer.close(index);
+                                parent.layui.table.reload('tableList');//重新加载父级tabel数据
+                            } else {
+                                layer.alert(data.msg,{icon:2});
+                            }
+                        },
+                        error:function(data){
+                            //do something
+                            layer.msg('与服务器连接失败',{icon: 2});
+                        }
+                    });
+                    layer.close(index);
+                });
+            }
+
+            return false;
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

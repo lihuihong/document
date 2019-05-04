@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.document.mapper.AlterationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.document.entity.Alteration">
+        <id column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="unit_name" property="unitName" />
+        <result column="unit_name_time" property="unitNameTime" />
+        <result column="legal_representative" property="legalRepresentative" />
+        <result column="representative_time" property="representativeTime" />
+        <result column="address" property="address" />
+        <result column="address_time" property="addressTime" />
+        <result column="area" property="area" />
+        <result column="area_time" property="areaTime" />
+        <result column="terminal_numbe" property="terminalNumbe" />
+        <result column="terminal_numbe_time" property="terminalNumbeTime" />
+    </resultMap>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMapAlterationDto" type="com.document.dto.AlterationDto">
+        <id column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="unit_name" property="unitName" />
+        <result column="unit_name_time" property="unitNameTime" />
+        <result column="legal_representative" property="legalRepresentative" />
+        <result column="representative_time" property="representativeTime" />
+        <result column="address" property="address" />
+        <result column="address_time" property="addressTime" />
+        <result column="area" property="area" />
+        <result column="area_time" property="areaTime" />
+        <result column="terminal_numbe" property="terminalNumbe" />
+        <result column="terminal_numbe_time" property="terminalNumbeTime" />
+
+        <result column="typeInfoName" property="typeInfoName" />
+    </resultMap>
+
+    <select id="alterationList" parameterType="com.document.entity.Alteration" resultMap="BaseResultMapAlterationDto">
+        select s.*,t.name as typeInfoName from
+        alteration s,
+        type_info t
+        where 1=1
+        and
+        s.type_info_id=t.id and s.status=0
+        <if test="id!=null and id!=''">and s.id=#{id}</if>
+        <if test="unitName!=null and unitName!=''">and s.unit_name LIKE CONCAT('%',#{unitName},'%')</if>
+        <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+    </select>
+
+</mapper>

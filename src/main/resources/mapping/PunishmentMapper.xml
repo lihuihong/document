@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.document.mapper.PunishmentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.document.entity.Punishment">
+        <result column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="warning" property="warning" />
+        <result column="warning_time" property="warningTime" />
+        <result column="fine" property="fine" />
+        <result column="fine_time" property="fineTime" />
+        <result column="rectify" property="rectify" />
+        <result column="rectify_time" property="rectifyTime" />
+        <result column="revocation_permit" property="revocationPermit" />
+        <result column="revocation_permit_time" property="revocationPermitTime" />
+        <result column="confiscation_income" property="confiscationIncome" />
+        <result column="confiscation_income_time" property="confiscationIncomeTime" />
+        <result column="confiscation_property" property="confiscationProperty" />
+        <result column="confiscation_property_time" property="confiscationPropertyTime" />
+        <result column="confiscation_property_time" property="confiscationPropertyTime" />
+        <result column="status" property="status" />
+    </resultMap>
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMapPunishmentDto" type="com.document.dto.PunishmentDto">
+        <result column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="warning" property="warning" />
+        <result column="warning_time" property="warningTime" />
+        <result column="fine" property="fine" />
+        <result column="fine_time" property="fineTime" />
+        <result column="rectify" property="rectify" />
+        <result column="rectify_time" property="rectifyTime" />
+        <result column="revocation_permit" property="revocationPermit" />
+        <result column="revocation_permit_time" property="revocationPermitTime" />
+        <result column="confiscation_income" property="confiscationIncome" />
+        <result column="confiscation_income_time" property="confiscationIncomeTime" />
+        <result column="confiscation_property" property="confiscationProperty" />
+        <result column="confiscation_property_time" property="confiscationPropertyTime" />
+        <result column="confiscation_property_time" property="confiscationPropertyTime" />
+        <result column="status" property="status" />
+
+        <result column="typeInfoName" property="typeInfoName" />
+    </resultMap>
+
+    <select id="punishmentList" parameterType="com.document.entity.Punishment" resultMap="BaseResultMapPunishmentDto">
+        select s.*,t.name as typeInfoName from
+        punishment s,
+        type_info t
+        where 1=1
+        and
+        s.type_info_id=t.id and s.status=0
+        <if test="id!=null and id!=''">and s.id=#{id}</if>
+        <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+        <if test="warning!=null and warning!=''">and s.warning=#{warning}</if>
+    </select>
+
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.document.mapper.DocumentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.document.entity.Document">
+        <id column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="Fire_control" property="fireControl" />
+        <result column="environmental_protection" property="environmentalProtection" />
+        <result column="hygiene" property="hygiene" />
+        <result column="business_circles" property="businessCircles" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
+    </resultMap>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMapDocumentDto" type="com.document.dto.DocumentDto">
+        <id column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="Fire_control" property="fireControl" />
+        <result column="environmental_protection" property="environmentalProtection" />
+        <result column="hygiene" property="hygiene" />
+        <result column="business_circles" property="businessCircles" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
+
+        <result column="typeInfoName" property="typeInfoName" />
+    </resultMap>
+
+    <select id="documentList" parameterType="com.document.entity.Document" resultMap="BaseResultMapDocumentDto">
+        select s.*,t.name as typeInfoName from
+        document s,
+        type_info t
+        where 1=1
+        and
+        s.type_info_id=t.id and s.status=0
+        <if test="id!=null and id!=''">and s.id=#{id}</if>
+        <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+    </select>
+
+</mapper>
