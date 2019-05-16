@@ -1,16 +1,15 @@
-package com.document.controller.netba;
+package com.document.controller.sing;
 
 
 import com.baomidou.mybatisplus.plugins.Page;
+import com.document.dto.AlterationDto;
 import com.document.dto.BaseEntity;
-import com.document.dto.PunishmentDto;
-import com.document.dto.RepresentativeDto;
-import com.document.entity.Punishment;
-import com.document.entity.Representative;
+import com.document.dto.SingAlterationDto;
+import com.document.entity.Alteration;
 import com.document.entity.Result;
-import com.document.entity.Situation;
-import com.document.service.PunishmentService;
-import com.document.service.RepresentativeService;
+import com.document.entity.SingAlteration;
+import com.document.service.AlterationService;
+import com.document.service.SingAlterationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,29 +23,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * </p>
  *
  * @author heylhh
- * @since 2019-05-11
+ * @since 2019-05-16
  */
 @Controller
-@RequestMapping("/document/punishment")
-public class PunishmentController {
-
+@RequestMapping("/document/singAlteration")
+public class SingAlterationController {
     @Autowired
-    PunishmentService punishmentService;
+    SingAlterationService singAlterationService;
 
     /**
      * 获取列表
-     * @param punishmentDto
+     * @param singAlterationDto
      * @param baseEntity
      * @return
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public Result punishmentList(PunishmentDto punishmentDto, BaseEntity baseEntity){
+    public Result documentList(SingAlterationDto singAlterationDto, BaseEntity baseEntity){
         Result result = new Result();
-        Page punishmentList = punishmentService.punishmentList(punishmentDto, baseEntity);
-        if (punishmentList.getRecords().size()>0){
-            result.setData(punishmentList.getRecords());
-            result.setCount((int) punishmentList.getTotal());
+        Page singlterationList = singAlterationService.singlterationList(singAlterationDto, baseEntity);
+        if (singlterationList.getRecords().size()>0){
+            result.setData(singlterationList.getRecords());
+            result.setCount((int) singlterationList.getTotal());
             result.setSuccessMsg("获取数据成功");
         }else {
             result.setErrorMsg("无数据");
@@ -56,18 +54,18 @@ public class PunishmentController {
 
     /**
      * 新增或者修改信息
-     * @param punishment
+     * @param singAlteration
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Punishment punishment){
+    public Result saveOrEdit(SingAlteration singAlteration){
         Result result = new Result();
-        if (punishment.getId() != null && !punishment.getId().equals("")){
+        if (singAlteration.getId() != null && !singAlteration.getId().equals("")){
             //修改
-            Punishment punishmentInfo = punishmentService.selectById(punishment.getId());
-            BeanUtils.copyProperties(punishment,punishmentInfo);
-            boolean b = punishmentService.updateById(punishmentInfo);
+            SingAlteration singAlterationInfo = singAlterationService.selectById(singAlteration.getId());
+            BeanUtils.copyProperties(singAlteration,singAlterationInfo);
+            boolean b = singAlterationService.updateById(singAlterationInfo);
             if (b){
                 result.setSuccessMsg("修改成功");
             }else {
@@ -75,7 +73,7 @@ public class PunishmentController {
             }
         }else {
             //新增
-            boolean insert = punishmentService.insert(punishment);
+            boolean insert = singAlterationService.insert(singAlteration);
             if (insert){
                 result.setSuccessMsg("新增成功");
             }else {
@@ -87,17 +85,17 @@ public class PunishmentController {
 
     /**
      * 删除
-     * @param punishmentId
+     * @param singAlterationId
      * @return
      */
     @RequestMapping(value = "/del")
     @ResponseBody
-    public Result del(String punishmentId){
-        Punishment punishment = new Punishment();
-        punishment.setId(punishmentId);
-        punishment.setStatus("1");
+    public Result del(String singAlterationId){
+        SingAlteration singAlteration = new SingAlteration();
+        singAlteration.setId(Integer.valueOf(singAlterationId));
+        singAlteration.setStatus(1);
         Result result = new Result();
-        boolean b = punishmentService.updateById(punishment);
+        boolean b = singAlterationService.updateById(singAlteration);
         if (b){
             result.setSuccessMsg("删除成功");
         }else {
@@ -115,11 +113,11 @@ public class PunishmentController {
     @RequestMapping(value = "/examine")
     @ResponseBody
     public Result examine(String id,String type){
-        Punishment punishment = new Punishment();
-        punishment.setId(id);
-        punishment.setType(type);
+        SingAlteration singAlteration = new SingAlteration();
+        singAlteration.setId(Integer.valueOf(id));
+        singAlteration.setType(Integer.valueOf(type));
         Result result = new Result();
-        boolean b = punishmentService.updateById(punishment);
+        boolean b = singAlterationService.updateById(singAlteration);
         if (b){
             result.setSuccessMsg("审核成功");
         }else {
@@ -127,6 +125,5 @@ public class PunishmentController {
         }
         return result;
     }
-
 }
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.document.mapper.SingAlterationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.document.entity.SingAlteration">
+        <id column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="unit_name" property="unitName" />
+        <result column="unit_name_time" property="unitNameTime" />
+        <result column="legal_representative" property="legalRepresentative" />
+        <result column="representative_time" property="representativeTime" />
+        <result column="address" property="address" />
+        <result column="address_time" property="addressTime" />
+        <result column="area" property="area" />
+        <result column="area_time" property="areaTime" />
+        <result column="box_quantity" property="boxQuantity" />
+        <result column="box_quantity_time" property="boxQuantityTime" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
+    </resultMap>
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMapSingAlterationDto" type="com.document.dto.SingAlterationDto">
+        <id column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="unit_name" property="unitName" />
+        <result column="unit_name_time" property="unitNameTime" />
+        <result column="legal_representative" property="legalRepresentative" />
+        <result column="representative_time" property="representativeTime" />
+        <result column="address" property="address" />
+        <result column="address_time" property="addressTime" />
+        <result column="area" property="area" />
+        <result column="area_time" property="areaTime" />
+        <result column="box_quantity" property="boxQuantity" />
+        <result column="box_quantity_time" property="boxQuantityTime" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
+
+    </resultMap>
+
+    <select id="singlterationList" parameterType="com.document.entity.SingAlteration" resultMap="BaseResultMapSingAlterationDto">
+        select s.* from
+        sing_alteration s
+        where 1=1
+        and
+        s.status=0
+        <if test="id!=null and id!=''">and s.id=#{id}</if>
+        <if test="unitName!=null and unitName!=''">and s.unit_name LIKE CONCAT('%',#{unitName},'%')</if>
+        <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+    </select>
+
+</mapper>

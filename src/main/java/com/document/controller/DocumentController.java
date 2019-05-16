@@ -1,14 +1,15 @@
-package com.document.controller.netba;
+package com.document.controller;
 
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.document.dto.AlterationDto;
 import com.document.dto.BaseEntity;
 import com.document.dto.DocumentDto;
-import com.document.entity.Alteration;
+import com.document.dto.PunishmentDto;
 import com.document.entity.Document;
+import com.document.entity.Punishment;
 import com.document.entity.Result;
-import com.document.service.AlterationService;
+import com.document.service.DocumentService;
+import com.document.service.PunishmentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,26 +26,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since 2019-05-11
  */
 @Controller
-@RequestMapping("/document/netba/alteration")
-public class AlterationController {
+@RequestMapping("/document/document")
+public class DocumentController {
 
     @Autowired
-    AlterationService alterationService;
+    DocumentService documentService;
 
     /**
      * 获取列表
-     * @param alterationDto
+     * @param documentDto
      * @param baseEntity
      * @return
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public Result documentList(AlterationDto alterationDto, BaseEntity baseEntity){
+    public Result documentList(DocumentDto documentDto, BaseEntity baseEntity){
         Result result = new Result();
-        Page alterationList = alterationService.alterationList(alterationDto, baseEntity);
-        if (alterationList.getRecords().size()>0){
-            result.setData(alterationList.getRecords());
-            result.setCount((int) alterationList.getTotal());
+        Page documentList = documentService.documentList(documentDto, baseEntity);
+        if (documentList.getRecords().size()>0){
+            result.setData(documentList.getRecords());
+            result.setCount((int) documentList.getTotal());
             result.setSuccessMsg("获取数据成功");
         }else {
             result.setErrorMsg("无数据");
@@ -54,18 +55,18 @@ public class AlterationController {
 
     /**
      * 新增或者修改信息
-     * @param alteration
+     * @param document
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Alteration alteration){
+    public Result saveOrEdit(Document document){
         Result result = new Result();
-        if (alteration.getId() != null && !alteration.getId().equals("")){
+        if (document.getId() != null && !document.getId().equals("")){
             //修改
-            Alteration alterationInfo = alterationService.selectById(alteration.getId());
-            BeanUtils.copyProperties(alteration,alterationInfo);
-            boolean b = alterationService.updateById(alterationInfo);
+            Document documentInfo = documentService.selectById(document.getId());
+            BeanUtils.copyProperties(document,documentInfo);
+            boolean b = documentService.updateById(documentInfo);
             if (b){
                 result.setSuccessMsg("修改成功");
             }else {
@@ -73,7 +74,7 @@ public class AlterationController {
             }
         }else {
             //新增
-            boolean insert = alterationService.insert(alteration);
+            boolean insert = documentService.insert(document);
             if (insert){
                 result.setSuccessMsg("新增成功");
             }else {
@@ -85,17 +86,17 @@ public class AlterationController {
 
     /**
      * 删除
-     * @param alterationId
+     * @param documentId
      * @return
      */
     @RequestMapping(value = "/del")
     @ResponseBody
-    public Result del(String alterationId){
-        Alteration alteration = new Alteration();
-        alteration.setId(alterationId);
-        alteration.setStatus("1");
+    public Result del(String documentId){
+        Document document = new Document();
+        document.setId(documentId);
+        document.setStatus("1");
         Result result = new Result();
-        boolean b = alterationService.updateById(alteration);
+        boolean b = documentService.updateById(document);
         if (b){
             result.setSuccessMsg("删除成功");
         }else {
@@ -103,6 +104,7 @@ public class AlterationController {
         }
         return result;
     }
+
 
     /**
      * 审核
@@ -113,11 +115,11 @@ public class AlterationController {
     @RequestMapping(value = "/examine")
     @ResponseBody
     public Result examine(String id,String type){
-        Alteration alteration = new Alteration();
-        alteration.setId(id);
-        alteration.setType(type);
+        Document document = new Document();
+        document.setId(id);
+        document.setType(type);
         Result result = new Result();
-        boolean b = alterationService.updateById(alteration);
+        boolean b = documentService.updateById(document);
         if (b){
             result.setSuccessMsg("审核成功");
         }else {

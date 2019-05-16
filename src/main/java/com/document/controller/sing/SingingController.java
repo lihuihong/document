@@ -1,15 +1,15 @@
-package com.document.controller.netba;
+package com.document.controller.sing;
 
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.document.dto.BaseEntity;
-import com.document.dto.DocumentDto;
-import com.document.dto.PunishmentDto;
-import com.document.entity.Document;
-import com.document.entity.Punishment;
+import com.document.dto.SingingDto;
+import com.document.dto.SituationDto;
 import com.document.entity.Result;
-import com.document.service.DocumentService;
-import com.document.service.PunishmentService;
+import com.document.entity.Singing;
+import com.document.entity.Situation;
+import com.document.service.SingingService;
+import com.document.service.SituationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,29 +23,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * </p>
  *
  * @author heylhh
- * @since 2019-05-11
+ * @since 2019-05-16
  */
 @Controller
-@RequestMapping("/document/document")
-public class DocumentController {
+@RequestMapping("/document/singing")
+public class SingingController {
 
     @Autowired
-    DocumentService documentService;
+    SingingService singingService;
+
 
     /**
-     * 获取列表
-     * @param documentDto
+     * 获取单位基本情况列表
+     * @param singingDto
      * @param baseEntity
      * @return
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public Result documentList(DocumentDto documentDto, BaseEntity baseEntity){
+    public Result situationList(SingingDto singingDto, BaseEntity baseEntity){
         Result result = new Result();
-        Page documentList = documentService.documentList(documentDto, baseEntity);
-        if (documentList.getRecords().size()>0){
-            result.setData(documentList.getRecords());
-            result.setCount((int) documentList.getTotal());
+        Page singingList = singingService.singingList(singingDto, baseEntity);
+        if (singingList.getRecords().size()>0){
+            result.setData(singingList.getRecords());
+            result.setCount((int) singingList.getTotal());
             result.setSuccessMsg("获取数据成功");
         }else {
             result.setErrorMsg("无数据");
@@ -54,19 +55,19 @@ public class DocumentController {
     }
 
     /**
-     * 新增或者修改信息
-     * @param document
+     * 新增或者修改单位基本情况
+     * @param singing
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Document document){
+    public Result saveOrEdit(Singing singing){
         Result result = new Result();
-        if (document.getId() != null && !document.getId().equals("")){
+        if (singing.getId() != null && !singing.getId().equals("")){
             //修改
-            Document documentInfo = documentService.selectById(document.getId());
-            BeanUtils.copyProperties(document,documentInfo);
-            boolean b = documentService.updateById(documentInfo);
+            Singing singingInfo = singingService.selectById(singing.getId());
+            BeanUtils.copyProperties(singing,singingInfo);
+            boolean b = singingService.updateById(singingInfo);
             if (b){
                 result.setSuccessMsg("修改成功");
             }else {
@@ -74,7 +75,7 @@ public class DocumentController {
             }
         }else {
             //新增
-            boolean insert = documentService.insert(document);
+            boolean insert = singingService.insert(singing);
             if (insert){
                 result.setSuccessMsg("新增成功");
             }else {
@@ -86,17 +87,17 @@ public class DocumentController {
 
     /**
      * 删除
-     * @param documentId
+     * @param singingId
      * @return
      */
     @RequestMapping(value = "/del")
     @ResponseBody
-    public Result del(String documentId){
-        Document document = new Document();
-        document.setId(documentId);
-        document.setStatus("1");
+    public Result del(String singingId){
+        Singing singing = new Singing();
+        singing.setId(Integer.valueOf(singingId));
+        singing.setStatus(1);
         Result result = new Result();
-        boolean b = documentService.updateById(document);
+        boolean b = singingService.updateById(singing);
         if (b){
             result.setSuccessMsg("删除成功");
         }else {
@@ -104,7 +105,6 @@ public class DocumentController {
         }
         return result;
     }
-
 
     /**
      * 审核
@@ -115,11 +115,11 @@ public class DocumentController {
     @RequestMapping(value = "/examine")
     @ResponseBody
     public Result examine(String id,String type){
-        Document document = new Document();
-        document.setId(id);
-        document.setType(type);
+        Singing situation = new Singing();
+        situation.setId(Integer.valueOf(id));
+        situation.setType(Integer.valueOf(type));
         Result result = new Result();
-        boolean b = documentService.updateById(document);
+        boolean b = singingService.updateById(situation);
         if (b){
             result.setSuccessMsg("审核成功");
         }else {

@@ -1,4 +1,4 @@
-package com.document.controller.netba;
+package com.document.controller;
 
 
 import com.baomidou.mybatisplus.plugins.Page;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since 2019-05-11
  */
 @Controller
-@RequestMapping("/document/netba/representative")
+@RequestMapping("/document/representative")
 public class RepresentativeController {
 
     @Autowired

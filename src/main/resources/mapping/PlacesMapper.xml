@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.document.mapper.PlacesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.document.entity.Places">
+        <id column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="child" property="child" />
+        <result column="unit_name" property="unitName" />
+        <result column="business_address" property="businessAddress" />
+        <result column="management" property="management" />
+        <result column="work_telephone" property="workTelephone" />
+        <result column="operating_area" property="operatingArea" />
+        <result column="box_quantity" property="boxQuantity" />
+        <result column="performance_area" property="performanceArea" />
+        <result column="number_equipment" property="numberEquipment" />
+        <result column="total_investment" property="totalInvestment" />
+        <result column="license_key" property="licenseKey" />
+        <result column="Issuing_time" property="issuingTime" />
+        <result column="certification_authority" property="certificationAuthority" />
+        <result column="inspection_time" property="inspectionTime" />
+        <result column="rules" property="rules" />
+        <result column="number_people_employed" property="numberPeopleEmployed" />
+        <result column="authorized_number" property="authorizedNumber" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
+    </resultMap>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMapPlacesDto" type="com.document.dto.PlacesDto">
+        <id column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="child" property="child" />
+        <result column="unit_name" property="unitName" />
+        <result column="business_address" property="businessAddress" />
+        <result column="management" property="management" />
+        <result column="work_telephone" property="workTelephone" />
+        <result column="operating_area" property="operatingArea" />
+        <result column="box_quantity" property="boxQuantity" />
+        <result column="performance_area" property="performanceArea" />
+        <result column="number_equipment" property="numberEquipment" />
+        <result column="total_investment" property="totalInvestment" />
+        <result column="license_key" property="licenseKey" />
+        <result column="Issuing_time" property="issuingTime" />
+        <result column="certification_authority" property="certificationAuthority" />
+        <result column="inspection_time" property="inspectionTime" />
+        <result column="rules" property="rules" />
+        <result column="number_people_employed" property="numberPeopleEmployed" />
+        <result column="authorized_number" property="authorizedNumber" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
+
+    </resultMap>
+
+    <select id="placesList" parameterType="com.document.entity.Places" resultMap="BaseResultMapPlacesDto">
+        select s.* from
+        places s
+        where 1=1
+        and
+        s.status=0
+        <if test="id!=null and id!=''">and s.id=#{id}</if>
+        <if test="unitName!=null and unitName!=''">and s.unit_name LIKE CONCAT('%',#{unitName},'%')</if>
+        <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+    </select>
+
+</mapper>

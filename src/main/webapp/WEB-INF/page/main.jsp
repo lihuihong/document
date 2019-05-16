@@ -74,32 +74,6 @@
                                 <i class="layui-icon"></i><label>分类管理</label>
                             </a>
                         </dd>
-                        <dd>
-                            <a lay-href="/web/page/situation/situationList" class="nav-tab" lay-id="2"
-                               data-type="tabAdd">
-                                <i class="layui-icon"></i><label>单位管理</label>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a lay-href="/web/page/representative/list" class="nav-tab" lay-id="3" data-type="tabAdd">
-                                <i class="layui-icon"></i><label>法律代表管理</label>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a lay-href="/web/page/punishment/list" class="nav-tab" lay-id="4" data-type="tabAdd">
-                                <i class="layui-icon"></i><label>受处罚情况管理</label>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a lay-href="/web/page/document/list" class="nav-tab" lay-id="5" data-type="tabAdd">
-                                <i class="layui-icon"></i><label>其他审批文件管理</label>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a lay-href="/web/page/alteration/list" class="nav-tab" lay-id="6" data-type="tabAdd">
-                                <i class="layui-icon"></i><label>变更情况管理</label>
-                            </a>
-                        </dd>
                     </dl>
                 </li>
                 <li data-name="template" class="layui-nav-item">
@@ -112,18 +86,6 @@
                                 <i class="layui-icon"></i><label>单位管理</label>
                             </a>
                         </dd>
-                        <%--<dd>
-                        <a lay-href="/web/page/netba/representativeList" class="nav-tab" lay-id="13"
-                           data-type="tabAdd">
-                            <i class="layui-icon"></i><label>法定代表管理</label>
-                        </a>
-                        </dd>
-                        <dd>
-                            <a lay-href="/web/page/netba/representativeListInfo" class="nav-tab" lay-id="113"
-                               data-type="tabAdd">
-                                <i class="layui-icon"></i><label>负责人管理</label>
-                            </a>
-                        </dd>--%>
                         <dd>
                             <a lay-href="/web/page/netba/alterationList" class="nav-tab" lay-id="16" data-type="tabAdd">
                                 <i class="layui-icon"></i><label>变更情况管理</label>
@@ -131,6 +93,62 @@
                         </dd>
                     </dl>
                 </li>
+                <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="歌舞娱乐场所管理">
+                        <i class="layui-icon layui-icon-util"></i><label>歌舞娱乐场所管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/sing/situationList" class="nav-tab" lay-id="77" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/sing/alterationList" class="nav-tab" lay-id="78" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="游艺娱乐场所管理">
+                        <i class="layui-icon layui-icon-util"></i><label>游艺娱乐场所管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/places/situationList" class="nav-tab" lay-id="79" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/places/alterationList" class="nav-tab" lay-id="80" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
+                <a href="javascript:;" lay-tips="其他管理">
+                    <i class="layui-icon layui-icon-util"></i><label>其他管理</label>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a lay-href="/web/page/representative/list" class="nav-tab" lay-id="3" data-type="tabAdd">
+                            <i class="layui-icon"></i><label>法律代表管理</label>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a lay-href="/web/page/punishment/list" class="nav-tab" lay-id="4" data-type="tabAdd">
+                            <i class="layui-icon"></i><label>受处罚情况管理</label>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a lay-href="/web/page/document/list" class="nav-tab" lay-id="5" data-type="tabAdd">
+                            <i class="layui-icon"></i><label>其他审批文件管理</label>
+                        </a>
+                    </dd>
+                </dl>
+            </li>
             </ul>
         </div>
     </div>

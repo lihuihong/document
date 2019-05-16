@@ -1,14 +1,16 @@
-package com.document.controller.netba;
+package com.document.controller;
 
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.document.dto.AlterationDto;
 import com.document.dto.BaseEntity;
-import com.document.dto.DocumentDto;
-import com.document.entity.Alteration;
-import com.document.entity.Document;
+import com.document.dto.PunishmentDto;
+import com.document.dto.RepresentativeDto;
+import com.document.entity.Punishment;
+import com.document.entity.Representative;
 import com.document.entity.Result;
-import com.document.service.AlterationService;
+import com.document.entity.Situation;
+import com.document.service.PunishmentService;
+import com.document.service.RepresentativeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,26 +27,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since 2019-05-11
  */
 @Controller
-@RequestMapping("/document/netba/alteration")
-public class AlterationController {
+@RequestMapping("/document/punishment")
+public class PunishmentController {
 
     @Autowired
-    AlterationService alterationService;
+    PunishmentService punishmentService;
 
     /**
      * 获取列表
-     * @param alterationDto
+     * @param punishmentDto
      * @param baseEntity
      * @return
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public Result documentList(AlterationDto alterationDto, BaseEntity baseEntity){
+    public Result punishmentList(PunishmentDto punishmentDto, BaseEntity baseEntity){
         Result result = new Result();
-        Page alterationList = alterationService.alterationList(alterationDto, baseEntity);
-        if (alterationList.getRecords().size()>0){
-            result.setData(alterationList.getRecords());
-            result.setCount((int) alterationList.getTotal());
+        Page punishmentList = punishmentService.punishmentList(punishmentDto, baseEntity);
+        if (punishmentList.getRecords().size()>0){
+            result.setData(punishmentList.getRecords());
+            result.setCount((int) punishmentList.getTotal());
             result.setSuccessMsg("获取数据成功");
         }else {
             result.setErrorMsg("无数据");
@@ -54,18 +56,18 @@ public class AlterationController {
 
     /**
      * 新增或者修改信息
-     * @param alteration
+     * @param punishment
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Alteration alteration){
+    public Result saveOrEdit(Punishment punishment){
         Result result = new Result();
-        if (alteration.getId() != null && !alteration.getId().equals("")){
+        if (punishment.getId() != null && !punishment.getId().equals("")){
             //修改
-            Alteration alterationInfo = alterationService.selectById(alteration.getId());
-            BeanUtils.copyProperties(alteration,alterationInfo);
-            boolean b = alterationService.updateById(alterationInfo);
+            Punishment punishmentInfo = punishmentService.selectById(punishment.getId());
+            BeanUtils.copyProperties(punishment,punishmentInfo);
+            boolean b = punishmentService.updateById(punishmentInfo);
             if (b){
                 result.setSuccessMsg("修改成功");
             }else {
@@ -73,7 +75,7 @@ public class AlterationController {
             }
         }else {
             //新增
-            boolean insert = alterationService.insert(alteration);
+            boolean insert = punishmentService.insert(punishment);
             if (insert){
                 result.setSuccessMsg("新增成功");
             }else {
@@ -85,17 +87,17 @@ public class AlterationController {
 
     /**
      * 删除
-     * @param alterationId
+     * @param punishmentId
      * @return
      */
     @RequestMapping(value = "/del")
     @ResponseBody
-    public Result del(String alterationId){
-        Alteration alteration = new Alteration();
-        alteration.setId(alterationId);
-        alteration.setStatus("1");
+    public Result del(String punishmentId){
+        Punishment punishment = new Punishment();
+        punishment.setId(punishmentId);
+        punishment.setStatus("1");
         Result result = new Result();
-        boolean b = alterationService.updateById(alteration);
+        boolean b = punishmentService.updateById(punishment);
         if (b){
             result.setSuccessMsg("删除成功");
         }else {
@@ -113,11 +115,11 @@ public class AlterationController {
     @RequestMapping(value = "/examine")
     @ResponseBody
     public Result examine(String id,String type){
-        Alteration alteration = new Alteration();
-        alteration.setId(id);
-        alteration.setType(type);
+        Punishment punishment = new Punishment();
+        punishment.setId(id);
+        punishment.setType(type);
         Result result = new Result();
-        boolean b = alterationService.updateById(alteration);
+        boolean b = punishmentService.updateById(punishment);
         if (b){
             result.setSuccessMsg("审核成功");
         }else {
