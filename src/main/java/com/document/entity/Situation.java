@@ -108,8 +108,42 @@ public class Situation extends Model<Situation> {
      */
     @TableField("total_investment")
     private String totalInvestment;
+    private String ipaddress;
+    private String ipnumber;
+    private String service;
+    private String program;
 
+    public String getIpaddress() {
+        return ipaddress;
+    }
 
+    public void setIpaddress(String ipaddress) {
+        this.ipaddress = ipaddress;
+    }
+
+    public String getIpnumber() {
+        return ipnumber;
+    }
+
+    public void setIpnumber(String ipnumber) {
+        this.ipnumber = ipnumber;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public String getProgram() {
+        return program;
+    }
+
+    public void setProgram(String program) {
+        this.program = program;
+    }
 
     public String getStatus() {
         return status;

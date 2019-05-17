@@ -172,6 +172,157 @@
                     </dl>
                 </li>
                 <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="营业性演出管理">
+                        <i class="layui-icon layui-icon-util"></i><label>营业性演出管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/business/typeList" class="nav-tab" lay-id="87" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>分类管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/business/situationList" class="nav-tab" lay-id="88" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/business/alterationList" class="nav-tab" lay-id="89" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="印刷企业管理">
+                        <i class="layui-icon layui-icon-util"></i><label>印刷企业管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/enterprise/typeList" class="nav-tab" lay-id="90" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>分类管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/enterprise/situationList" class="nav-tab" lay-id="91" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/enterprise/alterationList" class="nav-tab" lay-id="92" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="出版物管理">
+                        <i class="layui-icon layui-icon-util"></i><label>出版物管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/publication/typeList" class="nav-tab" lay-id="93" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>分类管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/publication/situationList" class="nav-tab" lay-id="94" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/publication/alterationList" class="nav-tab" lay-id="95" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="广播电视管理">
+                        <i class="layui-icon layui-icon-util"></i><label>广播电视管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/radio/situationList" class="nav-tab" lay-id="96" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/radio/alterationList" class="nav-tab" lay-id="97" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="卫星地面接收管理">
+                        <i class="layui-icon layui-icon-util"></i><label>卫星地面接收管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/management/situationList" class="nav-tab" lay-id="98" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/management/alterationList" class="nav-tab" lay-id="99" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="互联网站管理">
+                        <i class="layui-icon layui-icon-util"></i><label>互联网站管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/Internet/situationList" class="nav-tab" lay-id="100" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/Internet/alterationList" class="nav-tab" lay-id="101" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="书（店）报摊管理">
+                        <i class="layui-icon layui-icon-util"></i><label>书（店）报摊管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/book/situationList" class="nav-tab" lay-id="102" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/book/alterationList" class="nav-tab" lay-id="103" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="文物管理">
+                        <i class="layui-icon layui-icon-util"></i><label>文物管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/cultural/situationList" class="nav-tab" lay-id="104" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/cultural/alterationList" class="nav-tab" lay-id="105" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
                 <a href="javascript:;" lay-tips="其他管理">
                     <i class="layui-icon layui-icon-util"></i><label>其他管理</label>
                 </a>

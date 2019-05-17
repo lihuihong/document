@@ -78,6 +78,25 @@ public class Alteration extends Model<Alteration> {
     @TableField("terminal_numbe_time")
     private String terminalNumbeTime;
 
+    private String service;
+    private String servicetime;
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public String getServicetime() {
+        return servicetime;
+    }
+
+    public void setServicetime(String servicetime) {
+        this.servicetime = servicetime;
+    }
+
     private String status;
     private String type;
     private String number;//电影管理（设备数量）

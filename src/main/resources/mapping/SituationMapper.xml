@@ -24,6 +24,10 @@
         <result column="total_investment" property="totalInvestment"/>
         <result column="type" property="type" />
         <result column="status" property="status" />
+        <result column="ipaddress" property="ipaddress" />
+        <result column="ipnumber" property="ipnumber" />
+        <result column="service" property="service" />
+        <result column="program" property="program" />
     </resultMap>
 
     <!-- 通用查询映射结果 -->
@@ -48,6 +52,10 @@
         <result column="total_investment" property="totalInvestment"/>
         <result column="type" property="type" />
         <result column="status" property="status" />
+        <result column="ipaddress" property="ipaddress" />
+        <result column="ipnumber" property="ipnumber" />
+        <result column="service" property="service" />
+        <result column="program" property="program" />
 
         <result column="typeInfoName" property="typeInfoName" />
     </resultMap>

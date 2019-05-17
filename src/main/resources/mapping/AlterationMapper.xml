@@ -18,6 +18,8 @@
         <result column="terminal_numbe_time" property="terminalNumbeTime" />
         <result column="number" property="number" />
         <result column="numbertime" property="numbertime" />
+        <result column="service" property="service" />
+        <result column="servicetime" property="servicetime" />
     </resultMap>
 
     <!-- 通用查询映射结果 -->
@@ -31,6 +33,8 @@
         <result column="address" property="address" />
         <result column="address_time" property="addressTime" />
         <result column="area" property="area" />
+        <result column="service" property="service" />
+        <result column="servicetime" property="servicetime" />
         <result column="area_time" property="areaTime" />
         <result column="terminal_numbe" property="terminalNumbe" />
         <result column="terminal_numbe_time" property="terminalNumbeTime" />

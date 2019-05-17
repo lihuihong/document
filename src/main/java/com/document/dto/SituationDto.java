@@ -35,15 +35,15 @@ public class SituationDto {
      */
     private String operatingArea;
     /**
-     * 服务器台数(音像管理 设备台数)(电影管理 包厢数量)
+     * 服务器台数(音像管理 设备台数)(电影管理 包厢数量)（营业性演出 包厢数量）
      */
     private String numberofServers;
     /**
-     * 终端台数(音像管理 不用)（电影管理 设备台数）
+     * 终端台数(音像管理 不用)（电影管理 设备台数）（营业性演出 设备台数）(印刷企业 设备台数)
      */
     private String terminalNumber;
     /**
-     * 网络接入商(音像管理 备案号)（电影管理 备案号）
+     * 网络接入商(音像管理 备案号)（电影管理 备案号）（卫星地面接收 是否境外）
      */
     private String networkAccess;
     /**
@@ -73,11 +73,16 @@ public class SituationDto {
      */
     private String rules;
     /**
-     * 地区(音像管理 不用)（电影管理 核定人数）
+     * 地区(音像管理 不用)（电影管理 核定人数）（营业性演出 核定人数）（ 出版物 出版方式）（卫星地面接收 接收卫星）
      */
     private String address;
     /**
      * 总投资额（万元）
      */
     private String totalInvestment;
+
+    private String ipaddress;
+    private String ipnumber;
+    private String service;
+    private String program;
 }
