@@ -128,6 +128,50 @@
                     </dl>
                 </li>
                 <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="音像管理">
+                        <i class="layui-icon layui-icon-util"></i><label>音像管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/audio/typeList" class="nav-tab" lay-id="81" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>分类管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/audio/situationList" class="nav-tab" lay-id="82" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/audio/alterationList" class="nav-tab" lay-id="83" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
+                    <a href="javascript:;" lay-tips="电影管理">
+                        <i class="layui-icon layui-icon-util"></i><label>电影管理</label>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="/web/page/video/typeList" class="nav-tab" lay-id="84" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>分类管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/video/situationList" class="nav-tab" lay-id="85" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>单位管理</label>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a lay-href="/web/page/video/alterationList" class="nav-tab" lay-id="86" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>变更情况管理</label>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li data-name="template" class="layui-nav-item">
                 <a href="javascript:;" lay-tips="其他管理">
                     <i class="layui-icon layui-icon-util"></i><label>其他管理</label>
                 </a>

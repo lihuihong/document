@@ -7,6 +7,30 @@
         <result column="id" property="id" />
         <result column="type_info_id" property="typeInfoId" />
         <result column="name" property="name" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
     </resultMap>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMapTypeInfoOneDto" type="com.document.dto.TypeInfoOneDto">
+        <result column="id" property="id" />
+        <result column="type_info_id" property="typeInfoId" />
+        <result column="name" property="name" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
+        <result column="typeInfoName" property="typeInfoName" />
+    </resultMap>
+
+    <select id="typeInfoOneList" parameterType="com.document.entity.TypeInfoOne" resultMap="BaseResultMapTypeInfoOneDto">
+        select s.*,t.name as typeInfoName from
+        type_info_one s,
+        type_info t
+        where 1=1
+        and
+        s.type_info_id=t.id and s.status=0
+        <if test="id!=null and id!=''">and s.id=#{id}</if>
+        <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+        <if test="name!=null and name!=''">and s.name LIKE CONCAT('%',#{name},'%')</if>
+    </select>
 
 </mapper>

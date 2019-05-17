@@ -46,13 +46,15 @@ public class AlterationDto {
      */
     private String areaTime;
     /**
-     * 终端台数
+     * 终端台数 (音像管理 设备数量)
      */
     private String terminalNumbe;
     /**
-     * 终端台数时间
+     * 终端台数时间(音像管理 设备数量时间)
      */
     private String terminalNumbeTime;
     private String status;
     private String type;
+    private String number;//电影管理（设备数量）
+    private String numbertime;//电影管理（设备数量时间）
 }

@@ -180,7 +180,7 @@
                     $.ajax({
                         url:'/document/places/del',
                         type:'post',
-                        data:{'situationId':data.id},
+                        data:{'placesId':data.id},
                         dataType:"json",
                         beforeSend:function(){//console.log(JSON.stringify(data.field));
                         },

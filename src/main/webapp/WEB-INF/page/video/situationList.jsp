@@ -52,7 +52,7 @@
         //加载表格
         table.render({
             elem: '#tableList'
-            ,url:'/document/singing/list'
+            ,url:'/document/netba/situation/situationList'
             ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             ,toolbar:'true'
             ,defaultToolbar: ['filter']
@@ -71,29 +71,31 @@
                     }},
                 {field:'workTelephone', title: '单位电话', align:'center',hide:true},
                 {field:'operatingArea', title: '经营面积（m2）', align:'center',hide:true},
-                {field:'boxQuantity', title: '包厢数量', align:'center',hide:true},
-                {field:'performanceArea', title: '表演区（大厅）面积（m2）', align:'center',hide:true},
-                {field:'numberEquipment', title: '点歌设备台数', align:'center',hide:true},
+                {field:'numberofServers', title: '包厢数量', align:'center',hide:true},
+                {field:'networkAccess', title: '备案号', align:'center',hide:true},
+                {field:'terminalNumber', title: '设备台数', align:'center',hide:true},
+                {field:'address', title: '核定人数', align:'center',hide:true},
+                {field:'peopleEmployed', title: '从业人员数', align:'center',hide:true},
                 {field:'licenseKey', title: '许可证号', align:'center',hide:true},
                 {field:'issuingTime', title: '发证时间', align:'center',hide:true},
                 {field:'certificationAuthority', title: '发证机关', align:'center',hide:true},
                 {field:'inspectionTime', title: '年检时间', align:'center',hide:true},
                 {field: 'rules', title: '规章制度', templet: '#switchType', align: 'center'},
-                {field:'numberPeopleEmployed', title: '从业人员数', align:'center'},
-                {field:'authorizedNumber', title: '核定人数', align:'center'},
+                {field:'totalInvestment', title: '总投资额（万元）', align:'center'},
                 {field:'type', title: '审核状态', align:'center',templet: function(d){
                        switch (d.type) {
-                           case 0:
+                           case "0":
                                return "通过审核";
-                           case 1:
+                           case "1":
                                return "未通过审核";
-                           case 2:
+                           case "2":
                                return "未审核";
                        }
                     }},
                 {fixed: 'right', width:260, title: '操作', align:'center', toolbar: '#barDemo'}
             ]],
             page: true,
+            where:{"typeInfoId":"5"}
         });
 
 
@@ -128,7 +130,7 @@
                 show=1;
             }
             $.ajax({
-                url:'/document/singing/saveOrEdit',
+                url:'/document/netba/situation/saveOrEdit',
                 type:'post',
                 data:{"id":ifKey,"rules":show},
                 dataType:"json",
@@ -162,7 +164,7 @@
                    btnAlign: 'c',
                    anim: 0,
                    shade: [0.5, 'rgb(0,0,0)'],
-                   content: '/web/page/sing/situationEdit',
+                   content: '/web/page/video/situationEdit',
                    zIndex: layer.zIndex, //重点1
                    success: function(layero,index){
                        // 获取子页面的iframe
@@ -177,9 +179,9 @@
             }if(obj.event === 'del'){
                 layer.confirm('单位名称：'+data.unitName, {icon: 3, title:'是否确定删除?'}, function(index){
                     $.ajax({
-                        url:'/document/singing/del',
+                        url:'/document/netba/situation/del',
                         type:'post',
-                        data:{'singingId':data.id},
+                        data:{'situationId':data.id},
                         dataType:"json",
                         beforeSend:function(){//console.log(JSON.stringify(data.field));
                         },
@@ -209,7 +211,7 @@
                     btnAlign: 'c',
                     anim: 0,
                     shade: [0.5, 'rgb(0,0,0)'],
-                    content: '/web/page/sing/situationExamine',
+                    content: '/web/page/video/situationExamine',
                     zIndex: layer.zIndex, //重点1
                     success: function (layero) {
                         //layer.setTop(layero); //顶置窗口
@@ -232,7 +234,7 @@
                 btnAlign: 'c',
                 anim: 0,
                 shade: [0.5, 'rgb(0,0,0)'],
-                content: '/web/page/sing/situationEdit',
+                content: '/web/page/video/situationEdit',
                 zIndex: layer.zIndex, //重点1
                 success: function(layero){
                     //layer.setTop(layero); //顶置窗口

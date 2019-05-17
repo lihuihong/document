@@ -117,7 +117,7 @@
                     $.ajax({
                         url: '/document/netba/alteration/del',
                         type: 'post',
-                        data: {'representativeId': data.id},
+                        data: {'alterationId': data.id},
                         dataType: "json",
                         beforeSend: function () {//console.log(JSON.stringify(data.field));
                         },

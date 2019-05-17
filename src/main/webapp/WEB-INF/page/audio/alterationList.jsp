@@ -38,7 +38,7 @@
         //加载表格
         table.render({
             elem: '#tableList'
-            , url: '/document/placesAlteration/list'
+            , url: '/document/netba/alteration/list'
             , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             , toolbar: 'true'
             , defaultToolbar: ['filter']
@@ -53,15 +53,16 @@
                 {field: 'addressTime', title: '地址时间', align: 'center', hide: true},
                 {field: 'area', title: '面积', align: 'center'},
                 {field: 'areaTime', title: '面积时间', align: 'center', hide: true},
-                {field: 'boxQuantity', title: '包厢数量', align: 'center'},
-                {field: 'boxQuantityTime', title: '包厢数量时间', align: 'center', hide: true},
-                {field: 'type', title: '审核状态', align: 'center', templet: function (d) {
+                {field: 'terminalNumbe', title: '设备数量', align: 'center'},
+                {field: 'terminalNumbeTime', title: '设备数量时间', align: 'center', hide: true},
+                {
+                    field: 'type', title: '审核状态', align: 'center', templet: function (d) {
                         switch (d.type) {
-                            case 0:
+                            case "0":
                                 return "通过审核";
-                            case 1:
+                            case "1":
                                 return "未通过审核";
-                            case 2:
+                            case "2":
                                 return "未审核";
                         }
                     }
@@ -69,6 +70,7 @@
                 {fixed: 'right', width: 260, title: '操作', align: 'center', toolbar: '#barDemo'}
             ]],
             page: true,
+            where:{"typeInfoId":"4"}
         });
 
 
@@ -97,7 +99,7 @@
                     btnAlign: 'c',
                     anim: 0,
                     shade: [0.5, 'rgb(0,0,0)'],
-                    content: '/web/page/places/alterationEdit',
+                    content: '/web/page/audio/alterationEdit',
                     zIndex: layer.zIndex, //重点1
                     success: function (layero, index) {
                         // 获取子页面的iframe
@@ -113,9 +115,9 @@
             if (obj.event === 'del') {
                 layer.confirm('单位名称：' + data.unitName, {icon: 3, title: '是否确定删除?'}, function (index) {
                     $.ajax({
-                        url: '/document/placesAlteration/del',
+                        url: '/document/netba/alteration/del',
                         type: 'post',
-                        data: {'placesAlterationId': data.id},
+                        data: {'alterationId': data.id},
                         dataType: "json",
                         beforeSend: function () {//console.log(JSON.stringify(data.field));
                         },
@@ -145,7 +147,7 @@
                     btnAlign: 'c',
                     anim: 0,
                     shade: [0.5, 'rgb(0,0,0)'],
-                    content: '/web/page/places/alterationExamine',
+                    content: '/web/page/audio/alterationExamine',
                     zIndex: layer.zIndex, //重点1
                     success: function (layero) {
                         //layer.setTop(layero); //顶置窗口
@@ -168,7 +170,7 @@
                 btnAlign: 'c',
                 anim: 0,
                 shade: [0.5, 'rgb(0,0,0)'],
-                content: '/web/page/places/alterationEdit',
+                content: '/web/page/audio/alterationEdit',
                 zIndex: layer.zIndex, //重点1
                 success: function (layero) {
                     //layer.setTop(layero); //顶置窗口

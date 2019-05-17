@@ -115,7 +115,7 @@
                     $.ajax({
                         url: '/document/singAlteration/del',
                         type: 'post',
-                        data: {'representativeId': data.id},
+                        data: {'singAlterationId': data.id},
                         dataType: "json",
                         beforeSend: function () {//console.log(JSON.stringify(data.field));
                         },

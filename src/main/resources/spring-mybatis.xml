@@ -69,6 +69,15 @@
         <property name="mapperLocations" value="classpath:mapping/*.xml"></property>
         <!-- 扫描entity包 使用别名 -->
         <property name="typeAliasesPackage" value="com.document.entity" />
+        <!--<property name="globalConfig">
+            <bean class="com.baomidou.mybatisplus.core.config.GlobalConfig">
+                <property name="dbConfig">
+                    <bean class="com.baomidou.mybatisplus.core.config.GlobalConfig.DbConfig">
+                        <property name="idType" value="AUTO" />
+                    </bean>
+                </property>
+            </bean>
+        </property>-->
         <property name="plugins">
             <array>
                 <!-- 分页插件配置 -->

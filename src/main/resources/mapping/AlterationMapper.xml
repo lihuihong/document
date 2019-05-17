@@ -16,6 +16,8 @@
         <result column="area_time" property="areaTime" />
         <result column="terminal_numbe" property="terminalNumbe" />
         <result column="terminal_numbe_time" property="terminalNumbeTime" />
+        <result column="number" property="number" />
+        <result column="numbertime" property="numbertime" />
     </resultMap>
 
     <!-- 通用查询映射结果 -->
@@ -32,6 +34,8 @@
         <result column="area_time" property="areaTime" />
         <result column="terminal_numbe" property="terminalNumbe" />
         <result column="terminal_numbe_time" property="terminalNumbeTime" />
+        <result column="number" property="number" />
+        <result column="numbertime" property="numbertime" />
 
         <result column="typeInfoName" property="typeInfoName" />
     </resultMap>

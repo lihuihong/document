@@ -35,15 +35,15 @@ public class SituationDto {
      */
     private String operatingArea;
     /**
-     * 服务器台数
+     * 服务器台数(音像管理 设备台数)(电影管理 包厢数量)
      */
     private String numberofServers;
     /**
-     * 终端台数
+     * 终端台数(音像管理 不用)（电影管理 设备台数）
      */
     private String terminalNumber;
     /**
-     * 网络接入商
+     * 网络接入商(音像管理 备案号)（电影管理 备案号）
      */
     private String networkAccess;
     /**
@@ -73,7 +73,7 @@ public class SituationDto {
      */
     private String rules;
     /**
-     * 地区
+     * 地区(音像管理 不用)（电影管理 核定人数）
      */
     private String address;
     /**

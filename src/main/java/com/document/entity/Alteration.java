@@ -68,18 +68,36 @@ public class Alteration extends Model<Alteration> {
     @TableField("area_time")
     private String areaTime;
     /**
-     * 终端台数
+     * 终端台数(电影管理 包厢数量)（音像管理 设备数量）
      */
     @TableField("terminal_numbe")
     private String terminalNumbe;
     /**
-     * 终端台数时间
+     * 终端台数时间(电影管理 包厢数量时间)（音像管理 设备数量时间）
      */
     @TableField("terminal_numbe_time")
     private String terminalNumbeTime;
 
     private String status;
     private String type;
+    private String number;//电影管理（设备数量）
+    private String numbertime;//电影管理（设备数量时间）
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getNumbertime() {
+        return numbertime;
+    }
+
+    public void setNumbertime(String numbertime) {
+        this.numbertime = numbertime;
+    }
 
     public String getStatus() {
         return status;
