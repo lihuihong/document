@@ -320,8 +320,14 @@
                                 <i class="layui-icon"></i><label>变更情况管理</label>
                             </a>
                         </dd>
+                        <dd>
+                            <a lay-href="/web/page/cultural/salfList" class="nav-tab" lay-id="106" data-type="tabAdd">
+                                <i class="layui-icon"></i><label>文物安全管理</label>
+                            </a>
+                        </dd>
                     </dl>
                 </li>
+
                 <li data-name="template" class="layui-nav-item">
                 <a href="javascript:;" lay-tips="其他管理">
                     <i class="layui-icon layui-icon-util"></i><label>其他管理</label>

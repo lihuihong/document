@@ -14,7 +14,7 @@
 <body>
 <form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px;text-align: center">
     <input type="hidden" name="id" id="id">
-    <input type="hidden" name="typeInfoId" id="typeInfoId" value="13">
+    <input type="hidden" name="typeInfoId" id="typeInfoId" value="12">
     <%--<div class="layui-form-item">
         <label class="layui-form-label">所属分类</label>
         <div class="layui-input-block">
@@ -60,16 +60,16 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">保护级别</label>
+        <label class="layui-form-label">用户数量</label>
         <div class="layui-input-block">
-            <input type="text" name="area" id="area"  lay-verify="required|number" placeholder="请输入保护级别" autocomplete="off" class="layui-input">
+            <input type="text" name="area" id="area"  lay-verify="required|number" placeholder="请输入用户数量" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">保护级别时间</label>
+        <label class="layui-form-label">用户数量时间</label>
         <div class="layui-input-block">
-            <input type="text" name="areaTime" id="areaTime"  lay-verify="required" placeholder="保护级别时间" autocomplete="off" class="layui-input">
+            <input type="text" name="areaTime" id="areaTime"  lay-verify="required" placeholder="用户数量时间" autocomplete="off" class="layui-input">
         </div>
     </div>
 

@@ -53,8 +53,8 @@
                 {field: 'addressTime', title: '地址时间', align: 'center', hide: true},
                 {field: 'area', title: '面积', align: 'center'},
                 {field: 'areaTime', title: '面积时间', align: 'center', hide: true},
-                {field: 'number', title: '设备数量', align: 'center', hide: true},
-                {field: 'numbertime', title: '设备数量时间', align: 'center', hide: true},
+                {field: 'number', title: '保护级别', align: 'center', hide: true},
+                {field: 'numbertime', title: '保护级别时间', align: 'center', hide: true},
                 {
                     field: 'type', title: '审核状态', align: 'center', templet: function (d) {
                         switch (d.type) {
@@ -70,7 +70,7 @@
                 {fixed: 'right', width: 260, title: '操作', align: 'center', toolbar: '#barDemo'}
             ]],
             page: true,
-            where:{"typeInfoId":"12"}
+            where:{"typeInfoId":"13"}
         });
 
 
@@ -99,7 +99,7 @@
                     btnAlign: 'c',
                     anim: 0,
                     shade: [0.5, 'rgb(0,0,0)'],
-                    content: '/web/page/book/alterationEdit',
+                    content: '/web/page/cultural/alterationEdit',
                     zIndex: layer.zIndex, //重点1
                     success: function (layero, index) {
                         // 获取子页面的iframe
@@ -147,7 +147,7 @@
                     btnAlign: 'c',
                     anim: 0,
                     shade: [0.5, 'rgb(0,0,0)'],
-                    content: '/web/page/book/alterationExamine',
+                    content: '/web/page/cultural/alterationExamine',
                     zIndex: layer.zIndex, //重点1
                     success: function (layero) {
                         //layer.setTop(layero); //顶置窗口
@@ -170,7 +170,7 @@
                 btnAlign: 'c',
                 anim: 0,
                 shade: [0.5, 'rgb(0,0,0)'],
-                content: '/web/page/book/alterationEdit',
+                content: '/web/page/cultural/alterationEdit',
                 zIndex: layer.zIndex, //重点1
                 success: function (layero) {
                     //layer.setTop(layero); //顶置窗口

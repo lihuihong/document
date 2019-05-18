@@ -12,9 +12,15 @@
 </head>
 
 <body>
-<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px;text-align: center">
+<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px ;text-align: center" >
     <input type="hidden" name="id" id="id">
-    <input type="hidden" name="typeInfoId" id="typeInfoId" value="13">
+    <input type="hidden" name="typeInfoId" id="typeInfoId" value="15">
+    <div class="layui-form-item">
+        <label class="layui-form-label">摄像镜头</label>
+        <div class="layui-input-block">
+            <input type="text" name="unitName" id="unitName" required lay-verify="required" placeholder="请输入摄像镜头" autocomplete="off" class="layui-input">
+        </div>
+    </div>
     <%--<div class="layui-form-item">
         <label class="layui-form-label">所属分类</label>
         <div class="layui-input-block">
@@ -24,115 +30,94 @@
         </div>
     </div>--%>
     <div class="layui-form-item">
-        <label class="layui-form-label">单位名称</label>
+        <label class="layui-form-label">灭火器</label>
         <div class="layui-input-block">
-            <input type="text" name="unitName" id="unitName" required lay-verify="required" placeholder="单位名称" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">单位名称时间</label>
-        <div class="layui-input-block">
-            <input type="text" name="unitNameTime" id="unitNameTime" lay-verify="required" placeholder="单位名称时间" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">法定代表人</label>
-        <div class="layui-input-block">
-            <input type="text" name="legalRepresentative" id="legalRepresentative"  lay-verify="required" placeholder="请输入法定代表人" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">法定代表人时间</label>
-        <div class="layui-input-block">
-            <input type="text" name="representativeTime" id="representativeTime"  lay-verify="required" placeholder="法定代表人时间" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">地址</label>
-        <div class="layui-input-block">
-            <input type="text" name="address" id="address"  lay-verify="required" placeholder="请输入地址" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">地址时间</label>
-        <div class="layui-input-block">
-            <input type="text" name="addressTime" id="addressTime"  lay-verify="required" placeholder="地址时间" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">保护级别</label>
-        <div class="layui-input-block">
-            <input type="text" name="area" id="area"  lay-verify="required|number" placeholder="请输入保护级别" autocomplete="off" class="layui-input">
+            <input type="text" name="businessAddress" id="businessAddress" lay-verify="required" placeholder="请输入灭火器" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">保护级别时间</label>
+        <label class="layui-form-label">防盗门</label>
         <div class="layui-input-block">
-            <input type="text" name="areaTime" id="areaTime"  lay-verify="required" placeholder="保护级别时间" autocomplete="off" class="layui-input">
+            <input type="text" name="workTelephone" id="workTelephone"  lay-verify="required" placeholder="请输入防盗门" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">报警装置</label>
+        <div class="layui-input-block">
+            <input type="text" name="operatingArea" id="operatingArea"  lay-verify="required" placeholder="请输入报警装置" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">自动喷淋</label>
+        <div class="layui-input-block">
+            <input type="text" name="terminalNumber" id="terminalNumber"  lay-verify="required" placeholder="请输入自动喷淋" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">设备数量</label>
+        <label class="layui-form-label">消防栓</label>
         <div class="layui-input-block">
-            <input type="text" name="number" id="number"  lay-verify="required|number" placeholder="请输入设备数量" autocomplete="off" class="layui-input">
+            <input type="text" name="peopleEmployed" id="peopleEmployed"  lay-verify="required" placeholder="请输入消防栓" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">设备数量时间</label>
+        <label class="layui-form-label">保安人数</label>
         <div class="layui-input-block">
-            <input type="text" name="numbertime" id="numbertime"  lay-verify="required" placeholder="设备数量时间" autocomplete="off" class="layui-input">
+            <input type="text" name="licenseKey" id="licenseKey"  lay-verify="required" placeholder="请输入保安人数" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        <label class="layui-form-label">规章制度</label>
+        <div class="layui-input-block">
+            <input type="text" name="rules" id="rules"  lay-verify="required" placeholder="请输入规章制度" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">应急预案</label>
+        <div class="layui-input-block">
+            <input type="text" name="certificationAuthority" id="certificationAuthority"  lay-verify="required" placeholder="请输入应急预案" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+
     </div>
 </form>
 </body>
 <script src="/resources/layui/layui.js" charset="utf-8"></script>
 <script>
     var info = parent.preDate;
-    layui.use(['form', 'upload','laydate'], function() {
+    layui.use(['form','laydate'], function() {
         var form = layui.form;
         var $ = layui.jquery;
-        var upload = layui.upload;
         var laydate = layui.laydate;
         //表单初始赋值
         if (info != null){
             form.val('form',{
                 "id":info.id
                 ,"unitName":info.unitName
-                ,"unitNameTime":info.unitNameTime
-                ,"legalRepresentative":info.legalRepresentative
-                ,"representativeTime":info.representativeTime
-                ,"address":info.address
-                ,"addressTime":info.addressTime
-                ,"area":info.area
-                ,"areaTime":info.areaTime
-                ,"number":info.number
-                ,"numbertime":info.numbertime
+                ,"typeInfoId":info.typeInfoId
+                ,"businessAddress":info.businessAddress
+                ,"workTelephone":info.workTelephone
+                ,"terminalNumber":info.terminalNumber
+                ,"operatingArea":info.operatingArea
+                ,"peopleEmployed":info.peopleEmployed
+                ,"licenseKey":info.licenseKey
+                ,"rules":info.rules
+                ,"certificationAuthority":info.certificationAuthority
             });
             form.render();
         }
-
         //执行一个laydate实例
         laydate.render({
-            elem: '#unitNameTime' //指定元素
-        });
-        //执行一个laydate实例
+            elem: '#issuingTime' //指定元素
+        }); //执行一个laydate实例
         laydate.render({
-            elem: '#representativeTime' //指定元素
-        });//执行一个laydate实例
-        laydate.render({
-            elem: '#addressTime' //指定元素
-        });//执行一个laydate实例
-        laydate.render({
-            elem: '#areaTime' //指定元素
-        });//执行一个laydate实例
-        laydate.render({
-            elem: '#numbertime' //指定元素
+            elem: '#inspectionTime' //指定元素
         });
 
         /*$.ajax({
@@ -149,7 +134,6 @@
                     });
                     //alert(html);
                     $('#typeInfoId').html(html);
-
                     if (info != null &&info.typeInfoId != null){
                         $('#typeInfoId').val(info.typeInfoId);
                     }
@@ -164,7 +148,7 @@
             if (data.field.id !== "" && data.field.id != null){
                 layer.confirm('是否确定修改？',{icon: 3, title:'系统信息'},function(index){
                     $.ajax({
-                        url:'/document/netba/alteration/saveOrEdit',
+                        url:'/document/netba/situation/saveOrEdit',
                         type:'post',
                         data:data.field,
                         dataType:"json",
@@ -191,9 +175,8 @@
                 });
             }else {
                 layer.confirm('是否确定新增？',{icon: 3, title:'系统信息'},function(index){
-                    console.log("========"+data.field);
                     $.ajax({
-                        url:'/document/netba/alteration/saveOrEdit',
+                        url:'/document/netba/situation/saveOrEdit',
                         type:'post',
                         data:data.field,
                         dataType:"json",

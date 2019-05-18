@@ -13,12 +13,7 @@
 <body>
 <form class="layui-form">
     <div class="layui-form-item layui-elem-quote">
-        <label class="layui-form-label">单位名称</label>
-        <div class="layui-input-inline">
-            <input type="text" name="unitName" id="unitName" autocomplete="off" placeholder="请输入单位名称" class="layui-input">
-        </div>
-        <button type="button" class="layui-btn btnSearch" lay-filter="search" lay-submit>查询</button>
-        <button type="button" class="layui-btn layui-btn-normal btnAdd">+ 新增单位</button>
+        <button type="button" class="layui-btn layui-btn-normal btnAdd">+ 新增文物安全</button>
     </div>
 </form>
 <table class="layui-hide" id="tableList" lay-filter="demo"></table>
@@ -59,14 +54,15 @@
             ,cols: [[
                 {field: 'index', title: '排序', align:'center', type: 'numbers'},
                 {field: 'id', title: 'id', align:'center',hide:true},
-                {field:'unitName', title: '名称', align:'center'},
-                {field:'businessAddress', title: '地址', align:'center'},
-                {field:'workTelephone', title: '类别', align:'center',hide:true},
-                {field:'operatingArea', title: '面积（m2）', align:'center',hide:true},
-                {field:'terminalNumber', title: '年代', align:'center',hide:true},
-                {field:'peopleEmployed', title: '保护级别', align:'center',hide:true},
-                {field:'licenseKey', title: '管理单位', align:'center',hide:true},
-                {field:'issuingTime', title: '使用单位', align:'center',hide:true},
+                {field:'unitName', title: '摄像镜头', align:'center'},
+                {field:'businessAddress', title: '灭火器', align:'center'},
+                {field:'workTelephone', title: '防盗门', align:'center',hide:true},
+                {field:'operatingArea', title: '报警装置', align:'center',hide:true},
+                {field:'terminalNumber', title: '自动喷淋', align:'center',hide:true},
+                {field:'peopleEmployed', title: '消防栓', align:'center',hide:true},
+                {field:'licenseKey', title: '保安人数', align:'center',hide:true},
+                {field:'rules', title: '规章制度', align:'center',hide:true},
+                {field:'certificationAuthority', title: '应急预案', align:'center',hide:true},
                 {field:'type', title: '审核状态', align:'center',templet: function(d){
                         switch (d.type) {
                             case "0":
@@ -80,7 +76,7 @@
                 {fixed: 'right', width:260, title: '操作', align:'center', toolbar: '#barDemo'}
             ]],
             page: true,
-            where:{"typeInfoId":"13"}
+            where:{"typeInfoId":"15"}
         });
 
 
@@ -149,7 +145,7 @@
                     btnAlign: 'c',
                     anim: 0,
                     shade: [0.5, 'rgb(0,0,0)'],
-                    content: '/web/page/cultural/situationEdit',
+                    content: '/web/page/cultural/salfEdit',
                     zIndex: layer.zIndex, //重点1
                     success: function(layero,index){
                         // 获取子页面的iframe
@@ -219,7 +215,7 @@
                 btnAlign: 'c',
                 anim: 0,
                 shade: [0.5, 'rgb(0,0,0)'],
-                content: '/web/page/cultural/situationEdit',
+                content: '/web/page/cultural/salfEdit',
                 zIndex: layer.zIndex, //重点1
                 success: function(layero){
                     //layer.setTop(layero); //顶置窗口

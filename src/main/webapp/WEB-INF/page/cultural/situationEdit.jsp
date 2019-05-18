@@ -14,11 +14,11 @@
 <body>
 <form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px ;text-align: center" >
     <input type="hidden" name="id" id="id">
-    <input type="hidden" name="typeInfoId" id="typeInfoId" value="12">
+    <input type="hidden" name="typeInfoId" id="typeInfoId" value="13">
     <div class="layui-form-item">
-        <label class="layui-form-label">单位名称</label>
+        <label class="layui-form-label">名称</label>
         <div class="layui-input-block">
-            <input type="text" name="unitName" id="unitName" required lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+            <input type="text" name="unitName" id="unitName" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
         </div>
     </div>
     <%--<div class="layui-form-item">
@@ -30,78 +30,49 @@
         </div>
     </div>--%>
     <div class="layui-form-item">
-        <label class="layui-form-label">经营地址</label>
+        <label class="layui-form-label">地址</label>
         <div class="layui-input-block">
-            <input type="text" name="businessAddress" id="businessAddress" lay-verify="required" placeholder="请输入经营地址" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">经营性质</label>
-        <div class="layui-input-block">
-            <select name="management" id="management" lay-verify="required">
-                <option value="">--请选择经营性质--</option>
-                <option value="1">私营</option>
-                <option value="2">国营</option>
-            </select>
-        </div>
-    </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">单位电话</label>
-        <div class="layui-input-block">
-            <input type="text" name="workTelephone" id="workTelephone"  lay-verify="required|phone" placeholder="请输入单位电话" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">经营面积（m2）</label>
-        <div class="layui-input-block">
-            <input type="text" name="operatingArea" id="operatingArea"  lay-verify="required" placeholder="请输入经营面积（m2）" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">设备台数</label>
-        <div class="layui-input-block">
-            <input type="text" name="terminalNumber" id="terminalNumber"  lay-verify="required|number" placeholder="请输入设备台数" autocomplete="off" class="layui-input">
+            <input type="text" name="businessAddress" id="businessAddress" lay-verify="required" placeholder="请输入地址" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">从业人员数</label>
+        <label class="layui-form-label">类别</label>
         <div class="layui-input-block">
-            <input type="text" name="peopleEmployed" id="peopleEmployed"  lay-verify="required|number" placeholder="请输入从业人员数" autocomplete="off" class="layui-input">
+            <input type="text" name="workTelephone" id="workTelephone"  lay-verify="required" placeholder="请输入类别" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">发证时间</label>
+        <label class="layui-form-label">面积（m2）</label>
         <div class="layui-input-block">
-            <input type="text" name="issuingTime" id="issuingTime"  lay-verify="required" placeholder="请选择发证时间" autocomplete="off" class="layui-input">
+            <input type="text" name="operatingArea" id="operatingArea"  lay-verify="required" placeholder="请输入面积（m2）" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">年检时间</label>
+        <label class="layui-form-label">年代</label>
         <div class="layui-input-block">
-            <input type="text" name="inspectionTime" id="inspectionTime"  lay-verify="required" placeholder="请选择年检时间" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">许可证号</label>
-        <div class="layui-input-block">
-            <input type="text" name="licenseKey" id="licenseKey"  lay-verify="required" placeholder="请输入许可证号" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">发证机关</label>
-        <div class="layui-input-block">
-            <input type="text" name="certificationAuthority" id="certificationAuthority"  lay-verify="required" placeholder="请输入发证机关" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">总投资额（万元）</label>
-        <div class="layui-input-block">
-            <input type="text" name="totalInvestment" id="totalInvestment"  lay-verify="required" placeholder="请输入总投资额（万元）" autocomplete="off" class="layui-input">
+            <input type="text" name="terminalNumber" id="terminalNumber"  lay-verify="required" placeholder="请输入年代" autocomplete="off" class="layui-input">
         </div>
     </div>
 
+    <div class="layui-form-item">
+        <label class="layui-form-label">保护级别</label>
+        <div class="layui-input-block">
+            <input type="text" name="peopleEmployed" id="peopleEmployed"  lay-verify="required" placeholder="请输入保护级别" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">管理单位</label>
+        <div class="layui-input-block">
+            <input type="text" name="licenseKey" id="licenseKey"  lay-verify="required" placeholder="请输入管理单位" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">使用单位</label>
+        <div class="layui-input-block">
+            <input type="text" name="issuingTime" id="issuingTime"  lay-verify="required" placeholder="请输入使用单位" autocomplete="off" class="layui-input">
+        </div>
+    </div>
 
     <div class="layui-form-item">
 

@@ -59,14 +59,26 @@
             ,cols: [[
                 {field: 'index', title: '排序', align:'center', type: 'numbers'},
                 {field: 'id', title: 'id', align:'center',hide:true},
-                {field:'unitName', title: '名称', align:'center'},
-                {field:'businessAddress', title: '地址', align:'center'},
-                {field:'workTelephone', title: '类别', align:'center',hide:true},
-                {field:'operatingArea', title: '面积（m2）', align:'center',hide:true},
-                {field:'terminalNumber', title: '年代', align:'center',hide:true},
-                {field:'peopleEmployed', title: '保护级别', align:'center',hide:true},
-                {field:'licenseKey', title: '管理单位', align:'center',hide:true},
-                {field:'issuingTime', title: '使用单位', align:'center',hide:true},
+                {field:'unitName', title: '单位名称', align:'center'},
+                {field:'businessAddress', title: '经营地址', align:'center'},
+                {field:'management', title: '经营性质', align:'center',hide:true,templet: function(d){
+                        switch (d.management) {
+                            case "1":
+                                return "私营";
+                            case "2":
+                                return "国营";
+                        }
+                    }},
+                {field:'workTelephone', title: '单位电话', align:'center',hide:true},
+                {field:'operatingArea', title: '经营面积（m2）', align:'center',hide:true},
+                {field:'terminalNumber', title: '设备台数', align:'center',hide:true},
+                {field:'peopleEmployed', title: '从业人员数', align:'center',hide:true},
+                {field:'licenseKey', title: '许可证号', align:'center',hide:true},
+                {field:'issuingTime', title: '发证时间', align:'center',hide:true},
+                {field:'certificationAuthority', title: '发证机关', align:'center',hide:true},
+                {field:'inspectionTime', title: '年检时间', align:'center',hide:true},
+                {field: 'rules', title: '规章制度', templet: '#switchType', align: 'center'},
+                {field:'totalInvestment', title: '总投资额（万元）', align:'center'},
                 {field:'type', title: '审核状态', align:'center',templet: function(d){
                         switch (d.type) {
                             case "0":
