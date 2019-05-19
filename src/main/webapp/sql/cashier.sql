@@ -30,6 +30,8 @@ CREATE TABLE IF NOT EXISTS `alteration` (
                                           `area_time` date DEFAULT NULL COMMENT '面积时间',
                                           `terminal_numbe` varchar(50) DEFAULT NULL COMMENT '终端台数',
                                           `terminal_numbe_time` date DEFAULT NULL COMMENT '终端台数时间',
+                                          `service` varchar(50) DEFAULT NULL,
+                                          `servicetime` date DEFAULT NULL,
                                           `status` int(11) DEFAULT '0',
                                           `type` int(11) DEFAULT '2',
                                           PRIMARY KEY (`id`)
@@ -37,10 +39,10 @@ CREATE TABLE IF NOT EXISTS `alteration` (
 
 -- 正在导出表  document.alteration 的数据：~3 rows (大约)
 /*!40000 ALTER TABLE `alteration` DISABLE KEYS */;
-REPLACE INTO `alteration` (`id`, `type_info_id`, `unit_name`, `unit_name_time`, `legal_representative`, `representative_time`, `address`, `address_time`, `area`, `area_time`, `terminal_numbe`, `terminal_numbe_time`, `status`, `type`) VALUES
-(1, 1, '232', '2019-05-16', '323', '2019-05-16', '232', '2019-05-16', '232', '2019-05-16', '232', '2019-05-16', 0, 1),
-(2, 4, '瑟得瑟', '2019-05-09', '瑟得瑟', '2019-05-07', '瑟得瑟', '2019-05-15', '32', '2019-05-07', '22', '2019-05-20', 0, 1),
-(3, 1, '阿萨', '2019-05-16', '啊飒飒', '2019-05-09', '阿萨飒飒', '2019-05-10', '12121', '2019-05-16', '1212 ', '2019-05-05', 0, 2);
+REPLACE INTO `alteration` (`id`, `type_info_id`, `unit_name`, `unit_name_time`, `legal_representative`, `representative_time`, `address`, `address_time`, `area`, `area_time`, `terminal_numbe`, `terminal_numbe_time`, `service`, `servicetime`, `status`, `type`) VALUES
+(1, 1, '232', '2019-05-16', '323', '2019-05-16', '232', '2019-05-16', '232', '2019-05-16', '232', '2019-05-16', NULL, NULL, 0, 1),
+(2, 4, '瑟得瑟', '2019-05-09', '瑟得瑟', '2019-05-07', '瑟得瑟', '2019-05-15', '32', '2019-05-07', '22', '2019-05-20', NULL, NULL, 0, 1),
+(3, 1, '阿萨', '2019-05-16', '啊飒飒', '2019-05-09', '阿萨飒飒', '2019-05-10', '12121', '2019-05-16', '1212 ', '2019-05-05', NULL, NULL, 0, 2);
 /*!40000 ALTER TABLE `alteration` ENABLE KEYS */;
 
 -- 导出  表 document.document 结构
@@ -256,6 +258,10 @@ CREATE TABLE IF NOT EXISTS `situation` (
                                          `rules` varchar(50) DEFAULT '0' COMMENT '规章制度',
                                          `address` varchar(50) DEFAULT NULL COMMENT '地区',
                                          `total_investment` varchar(50) DEFAULT NULL COMMENT '总投资额（万元）',
+                                         `ipaddress` varchar(50) DEFAULT NULL COMMENT 'IP地址',
+                                         `ipnumber` varchar(50) DEFAULT NULL COMMENT 'ICP备案号',
+                                         `service` varchar(50) DEFAULT NULL COMMENT '服务器地址',
+                                         `program` varchar(50) DEFAULT NULL COMMENT '是否传播',
                                          `status` int(1) DEFAULT '0' COMMENT '是否删除 0正常 1删除',
                                          `type` int(10) DEFAULT '2' COMMENT '审核状态 0通过 1未通过 2未审核',
                                          PRIMARY KEY (`id`)
@@ -263,47 +269,61 @@ CREATE TABLE IF NOT EXISTS `situation` (
 
 -- 正在导出表  document.situation 的数据：~2 rows (大约)
 /*!40000 ALTER TABLE `situation` DISABLE KEYS */;
-REPLACE INTO `situation` (`id`, `type_info_id`, `child`, `unit_name`, `business_address`, `management`, `work_telephone`, `operating_area`, `numberof_servers`, `terminal_number`, `network_access`, `people_employed`, `license_key`, `Issuing_time`, `certification_authority`, `inspection_time`, `rules`, `address`, `total_investment`, `status`, `type`) VALUES
-(5, 1, NULL, '重庆市华谊影院', '重庆市南岸区', '2', '15425653251', '120', '210', '20', '3', '120', '1235231', '2019-05-05', '重庆市', '2019-05-05', '1', '重庆市', '2000', 0, 1),
-(6, 5, NULL, '重庆', '撒飒飒', '2', '12321232123', '1222', '12', '12', '2', '12', '1212121', '2019-05-10', '重庆', '2019-05-01', '0', '重庆', '123', 0, 0);
+REPLACE INTO `situation` (`id`, `type_info_id`, `child`, `unit_name`, `business_address`, `management`, `work_telephone`, `operating_area`, `numberof_servers`, `terminal_number`, `network_access`, `people_employed`, `license_key`, `Issuing_time`, `certification_authority`, `inspection_time`, `rules`, `address`, `total_investment`, `ipaddress`, `ipnumber`, `service`, `program`, `status`, `type`) VALUES
+(5, 1, NULL, '重庆市华谊影院', '重庆市南岸区', '2', '15425653251', '120', '210', '20', '3', '120', '1235231', '2019-05-05', '重庆市', '2019-05-05', '1', '重庆市', '2000', NULL, NULL, NULL, NULL, 0, 1),
+(6, 5, NULL, '重庆', '撒飒飒', '2', '12321232123', '1222', '12', '12', '2', '12', '1212121', '2019-05-10', '重庆', '2019-05-01', '0', '重庆', '123', NULL, NULL, NULL, NULL, 0, 0);
 /*!40000 ALTER TABLE `situation` ENABLE KEYS */;
 
 -- 导出  表 document.type_info 结构
 CREATE TABLE IF NOT EXISTS `type_info` (
                                          `id` bigint(50) NOT NULL AUTO_INCREMENT,
                                          `name` varchar(50) DEFAULT NULL COMMENT '分类名称',
+                                         `url` varchar(50) DEFAULT NULL COMMENT '页面地址',
                                          `status` int(1) DEFAULT '0' COMMENT '是否删除 0正常，1 删除',
                                          `type` int(1) DEFAULT NULL COMMENT '审核是否通过 0通过 1不 通过',
                                          PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- 正在导出表  document.type_info 的数据：~13 rows (大约)
 /*!40000 ALTER TABLE `type_info` DISABLE KEYS */;
-REPLACE INTO `type_info` (`id`, `name`, `status`, `type`) VALUES
-(1, '音像（出版）', 1, 0),
-(2, '电影', 0, 0),
-(3, '营业性演出', 0, 0),
-(4, '印刷企业', 0, 0),
-(5, '出版物', 0, 0),
-(6, '广播电视', 0, 0),
-(7, '卫星地面接收', 0, 0),
-(8, '互联网站', 0, 0),
-(9, '书（店）报摊', 0, 0),
-(10, '文物', 0, 0),
-(11, '网吧', 0, 0),
-(12, '歌舞娱乐场所', 0, 0),
-(13, '游艺娱乐场所', 1, 1);
+REPLACE INTO `type_info` (`id`, `name`, `url`, `status`, `type`) VALUES
+(1, '音像', 'Audio-visual/Audio-visual', 1, 0),
+(2, '电影', 'movie/movie', 0, 0),
+(3, '营业性演出', 'businessNature/businessNature', 0, 0),
+(4, '印刷企业', 'publication/publication', 0, 0),
+(5, '出版物', 'publication/publication', 0, 0),
+(6, '广播电视', 'radioBroadcast/radioBroadcast', 0, 0),
+(7, '卫星地面接收', 'satellite/satellite', 0, 0),
+(8, '互联网站', 'internetWebsite/internetWebsite', 0, 0),
+(9, '书（店）报摊', 'bookshop/bookshop', 0, 0),
+(10, '文物', 'culturalRelic/culturalRelic', 0, 0),
+(11, '网吧', 'internerBar/InternetBar', 0, 0),
+(12, '歌舞娱乐场所', 'songDance/songDance', 0, 0),
+(13, '游艺娱乐场所', 'entertainment/entertainment', 1, 1);
 /*!40000 ALTER TABLE `type_info` ENABLE KEYS */;
 
 -- 导出  表 document.type_info_one 结构
 CREATE TABLE IF NOT EXISTS `type_info_one` (
-                                             `id` bigint(50) DEFAULT NULL,
+                                             `id` bigint(50) NOT NULL AUTO_INCREMENT,
                                              `type_info_id` int(11) DEFAULT NULL COMMENT '父分类id',
-                                             `name` varchar(50) DEFAULT NULL COMMENT '子分类名称'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+                                             `name` varchar(50) DEFAULT NULL COMMENT '子分类名称',
+                                             `status` int(2) DEFAULT NULL,
+                                             `type` int(2) DEFAULT NULL,
+                                             PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
--- 正在导出表  document.type_info_one 的数据：~0 rows (大约)
+-- 正在导出表  document.type_info_one 的数据：~8 rows (大约)
 /*!40000 ALTER TABLE `type_info_one` DISABLE KEYS */;
+REPLACE INTO `type_info_one` (`id`, `type_info_id`, `name`, `status`, `type`) VALUES
+(1, 6, '文艺表演团体', 0, 0),
+(2, 6, '演出场所', 0, NULL),
+(3, 6, '个体演员', 0, NULL),
+(4, 6, '个体演出经纪人', 0, NULL),
+(5, 7, '所属', 0, NULL),
+(6, 7, '如图', 0, NULL),
+(7, 7, '二二', 0, NULL),
+(8, 8, '同一天', 0, NULL),
+(9, 5, '电影院', 0, NULL);
 /*!40000 ALTER TABLE `type_info_one` ENABLE KEYS */;
 
 -- 导出  表 document.user_info 结构
