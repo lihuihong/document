@@ -9,11 +9,13 @@ import com.document.entity.Result;
 import com.document.entity.TypeInfo;
 import com.document.service.TypeInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,7 +33,35 @@ public class TypeInfoController {
     @Autowired
     TypeInfoService typeInfoService;
 
-
+    /**
+     * 前台页面首页数据
+     * @param typeInfo
+     * @param map
+     * @return
+     */
+    @RequestMapping(value = "/typeListView")
+    public String typeListView(TypeInfo typeInfo, ModelMap map) {
+        Wrapper<TypeInfo> entity = new EntityWrapper<TypeInfo>();
+        if (typeInfo.getName() != null) {
+            entity.like("name", "%" + typeInfo.getName() + "%");
+        }
+        if (typeInfo.getId() != null) {
+            entity.eq("id", typeInfo.getId());
+        }
+        entity.eq("status", 0);
+        int selectCount = typeInfoService.selectCount(entity);
+        if (selectCount > 0) {
+            List<Map<String, Object>> mapList = typeInfoService.selectMaps(entity);
+            if (mapList != null) {
+                map.put("data",mapList);
+            } else {
+                map.put("data","");
+            }
+        } else {
+            map.put("data","");
+        }
+        return "html/index";
+    }
     /**
      * 获取分类列表
      *

@@ -1,0 +1,58 @@
+{
+  "name": "punch",
+  "version": "1.0.0",
+  "data": [
+    {
+      "name": "网吧",
+      "url": "html/internerBar/InternetBar.html"
+    },
+    {
+      "name": "歌舞娱乐场所",
+      "url": "html/songDance/songDance.html"
+    },
+    {
+      "name": "游艺娱乐场所",
+      "url": "html/entertainment/entertainment.html"
+    },
+    {
+      "name": "音像",
+      "url": "html/Audio-visual/Audio-visual.html"
+    },
+    {
+      "name": "电影",
+      "url": "html/movie/movie.html"
+    },
+    {
+      "name": "营业性演出",
+      "url": "html/businessNature/businessNature.html"
+    },
+    {
+      "name": "印刷企业",
+      "url": "html/printing/printing.html"
+    },
+    {
+      "name": "出版物",
+      "url": "html/publication/publication.html"
+    },
+    {
+      "name": "广播电视",
+      "url": "html/radioBroadcast/radioBroadcast.html"
+    },
+    {
+      "name": "卫星地面接收",
+      "url": "html/satellite/satellite.html"
+    },
+    {
+      "name": "互联网站",
+      "url": "html/internetWebsite/internetWebsite.html"
+    },
+    {
+      "name": "书（店）报摊",
+      "url": "html/bookshop/bookshop.html"
+    },
+    {
+      "name": "文物",
+      "url": "html/culturalRelic/culturalRelic.html"
+    }
+  ]
+}

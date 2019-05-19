@@ -8,6 +8,7 @@
         <result column="name" property="name" />
         <result column="type" property="type" />
         <result column="status" property="status" />
+        <result column="url" property="url" />
     </resultMap>
 
 </mapper>

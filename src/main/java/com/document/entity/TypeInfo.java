@@ -30,6 +30,15 @@ public class TypeInfo extends Model<TypeInfo> {
     private String name;
     private String status;
     private String type;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getStatus() {
         return status;

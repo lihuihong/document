@@ -47,6 +47,7 @@
 					</div>
 				</span>
                 <a href="javascript:;" class="btnHeader logout" id="out">安全退出</a>
+                <a class="btnHeader" href="${pageContext.request.contextPath}/typeInfo/typeListView">首页</a>
             </li>
         </ul>
     </div>
