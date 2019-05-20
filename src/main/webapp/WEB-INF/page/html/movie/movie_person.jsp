@@ -52,7 +52,9 @@
             <span>负责人</span>
         </header>
         <div class="panel-body">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" id="form">
+                <input type="hidden" name="alias" value="1">
+                <input type="hidden" name="typeInfoId" value="2">
                 <div class="col-lg-6 col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="name" class="col-lg-3 col-sm-3 col-md-3  control-label" title="姓名">姓名</label>
@@ -198,9 +200,9 @@
 <script>
     $('#submit').on('click',function () {
         $.ajax({
-            url:'/view/json/submit.json',
-            type:'get',
-            data:'',
+            url:'/document/representative/saveOrEdit',
+            type:'post',
+            data:$("#form").serialize(),
             dataType:"json",
             beforeSend:function(){
                 //do something
@@ -226,6 +228,50 @@
             }
         });
         return false;
+    });
+
+    $.ajax({
+        url:'/document/representative/listUser',
+        type:'post',
+        dataType:"json",
+        data:{"page":1,"limit":999,"alias":1,"typeInfoId":2},
+        beforeSend:function(){
+            //do something
+        },
+        success:function(data){
+            //do something
+            if(data.code==0){
+                if (data.data[0].type === "0") {
+                    layer.open({
+                        type: 1,
+                        closeBtn: 0,
+                        title: '信息',
+                        content: '<div style="margin:20px 20px">审核成功</div>' //这里content是一个普通的String
+                    });
+                }else if (data.data[0].type === "1") {
+                    layer.open({
+                        type: 1,
+                        closeBtn: 0,
+                        title: '信息',
+                        content: '<div style="margin:20px 20px">审核失败</div>' //这里content是一个普通的String
+                    });
+                }else if (data.data[0].type === "2") {
+                    layer.open({
+                        type: 1,
+                        closeBtn: 0,
+                        title: '信息',
+                        content: '<div style="margin:20px 20px">未审核</div>' //这里content是一个普通的String
+                    });
+                }
+
+            } else {
+
+            }
+        },
+        error:function(data){
+            //do something
+            layer.msg('与服务器连接失败',{icon: 2});
+        }
     });
 </script>
 </body>

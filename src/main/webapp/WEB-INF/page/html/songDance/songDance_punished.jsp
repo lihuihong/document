@@ -196,7 +196,7 @@
         url:'/document/punishment/listUser',
         type:'post',
         dataType:"json",
-        data:{"page":1,"limit":999},
+        data:{"page":1,"limit":999,"typeInfoId":12},
         beforeSend:function(){
             //do something
         },

@@ -103,7 +103,6 @@ public class NetbaSituationController {
         }else {
             //新增
             situation.setUser(String.valueOf(userInfo.getId()));
-            situation.setTypeInfoId(userInfo.getTypeInfoId());
             boolean insert = situationService.insert(situation);
             if (insert){
                 result.setSuccessMsg("新增成功");

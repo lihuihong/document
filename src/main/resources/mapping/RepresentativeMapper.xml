@@ -55,12 +55,13 @@
         and
         s.type_info_id=t.id and s.status=0
         and s.user = u.id
-        <if test="id!=null and id!=''">and  s.id=#{id}</if>
+        <if test="id!=null and id!=''">and s.id=#{id}</if>
         <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
         <if test="name!=null and name!=''">and s.name LIKE CONCAT('%',#{name},'%')</if>
         <if test="alias!=null and alias!=''">and s.alias = #{alias}</if>
         <if test="user!=null and user!=''">and s.user = #{user}</if>
         <if test="alias!=null and alias!=''">and s.alias = #{alias}</if>
+        <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id = #{typeInfoId}</if>
     </select>
 
 </mapper>

@@ -100,9 +100,6 @@ public class RepresentativeController {
         }else {
             //新增
             representative.setUser(String.valueOf(userInfo.getId()));
-            if (representative.getTypeInfoId() == 0 && representative.getTypeInfoId() == null){
-                representative.setTypeInfoId(userInfo.getTypeInfoId());
-            }
             boolean insert = representativeService.insert(representative);
             if (insert){
                 result.setSuccessMsg("新增成功");

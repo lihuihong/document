@@ -101,7 +101,6 @@ public class AlterationController {
             //新增
             UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
             alteration.setUser(String.valueOf(userInfo.getId()));
-            alteration.setTypeInfoId(userInfo.getTypeInfoId());
             boolean insert = alterationService.insert(alteration);
             if (insert){
                 result.setSuccessMsg("新增成功");

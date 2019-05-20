@@ -59,6 +59,7 @@
         <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
         <if test="warning!=null and warning!=''">and s.warning=#{warning}</if>
         <if test="user!=null and user!=''">and s.user = #{user}</if>
+        <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id = #{typeInfoId}</if>
     </select>
 
 </mapper>
