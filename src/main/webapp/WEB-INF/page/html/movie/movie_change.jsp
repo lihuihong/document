@@ -180,7 +180,7 @@
         url:'/document/netba/alteration/listUser',
         type:'post',
         dataType:"json",
-        data:{"page":1,"limit":999},
+        data:{"page":1,"limit":999,"typeInfoId":2},
         beforeSend:function(){
             //do something
         },
