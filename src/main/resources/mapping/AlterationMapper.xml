@@ -20,6 +20,7 @@
         <result column="numbertime" property="numbertime" />
         <result column="service" property="service" />
         <result column="servicetime" property="servicetime" />
+        <result column="user" property="user" />
     </resultMap>
 
     <!-- 通用查询映射结果 -->
@@ -40,6 +41,8 @@
         <result column="terminal_numbe_time" property="terminalNumbeTime" />
         <result column="number" property="number" />
         <result column="numbertime" property="numbertime" />
+        <result column="user" property="user" />
+        <result column="username" property="username" />
 
         <result column="typeInfoName" property="typeInfoName" />
     </resultMap>
@@ -48,12 +51,14 @@
         select s.*,t.name as typeInfoName from
         alteration s,
         type_info t
+        ,user_info u
         where 1=1
         and
-        s.type_info_id=t.id and s.status=0
+        s.type_info_id=t.id and s.status=0 and s.user = u.id
         <if test="id!=null and id!=''">and s.id=#{id}</if>
         <if test="unitName!=null and unitName!=''">and s.unit_name LIKE CONCAT('%',#{unitName},'%')</if>
         <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+        <if test="user!=null and user!=''">and s.user = #{user}</if>
     </select>
 
 </mapper>

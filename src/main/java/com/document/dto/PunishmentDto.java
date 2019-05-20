@@ -64,4 +64,6 @@ public class PunishmentDto {
 
     private String status;
     private String type;
+    private String user;
+    private String username;
 }

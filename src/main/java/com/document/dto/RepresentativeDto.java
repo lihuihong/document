@@ -61,5 +61,7 @@ public class RepresentativeDto {
     private String phone;
     private String status;
     private String type;
+    private String user;
+    private String username;
 
 }

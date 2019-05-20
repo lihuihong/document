@@ -85,4 +85,6 @@ public class SituationDto {
     private String ipnumber;
     private String service;
     private String program;
+    private String user;
+    private String username;
 }

@@ -29,5 +29,7 @@ public class DocumentDto {
     private String businessCircles;
     private String status;
     private String type;
+    private String user;
+    private String username;
 
 }

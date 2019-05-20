@@ -88,6 +88,15 @@ public class Punishment extends Model<Punishment> {
 
     private String status;
     private String type;
+    private String user;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getStatus() {
         return status;

@@ -8,6 +8,7 @@ import com.document.dto.DocumentDto;
 import com.document.entity.Alteration;
 import com.document.entity.Document;
 import com.document.entity.Result;
+import com.document.entity.UserInfo;
 import com.document.service.AlterationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -53,13 +56,36 @@ public class AlterationController {
     }
 
     /**
+     * 获取列表
+     * @param alterationDto
+     * @param baseEntity
+     * @return
+     */
+    @RequestMapping(value = "/listUser")
+    @ResponseBody
+    public Result listUser(AlterationDto alterationDto, BaseEntity baseEntity, HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        Result result = new Result();
+        alterationDto.setUser(String.valueOf(userInfo.getId()));
+        Page alterationList = alterationService.alterationList(alterationDto, baseEntity);
+        if (alterationList.getRecords().size()>0){
+            result.setData(alterationList.getRecords());
+            result.setCount((int) alterationList.getTotal());
+            result.setSuccessMsg("获取数据成功");
+        }else {
+            result.setErrorMsg("无数据");
+        }
+        return result;
+    }
+
+    /**
      * 新增或者修改信息
      * @param alteration
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Alteration alteration){
+    public Result saveOrEdit(Alteration alteration, HttpServletRequest request){
         Result result = new Result();
         if (alteration.getId() != null && !alteration.getId().equals("")){
             //修改
@@ -73,6 +99,9 @@ public class AlterationController {
             }
         }else {
             //新增
+            UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+            alteration.setUser(String.valueOf(userInfo.getId()));
+            alteration.setTypeInfoId(userInfo.getTypeInfoId());
             boolean insert = alterationService.insert(alteration);
             if (insert){
                 result.setSuccessMsg("新增成功");

@@ -112,6 +112,15 @@ public class Situation extends Model<Situation> {
     private String ipnumber;
     private String service;
     private String program;
+    private String user;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getIpaddress() {
         return ipaddress;

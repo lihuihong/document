@@ -55,4 +55,6 @@ public class SingAlterationDto {
     private String boxQuantityTime;
     private Integer status;
     private Integer type;
+    private String user;
+    private String username;
 }

@@ -59,4 +59,6 @@ public class AlterationDto {
     private String type;
     private String number;//电影管理（设备数量）
     private String numbertime;//电影管理（设备数量时间）
+    private String user;
+    private String username;
 }

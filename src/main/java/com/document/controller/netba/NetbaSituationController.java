@@ -9,6 +9,7 @@ import com.document.dto.SituationDto;
 import com.document.entity.Representative;
 import com.document.entity.Result;
 import com.document.entity.Situation;
+import com.document.entity.UserInfo;
 import com.document.service.SituationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -55,13 +58,37 @@ public class NetbaSituationController {
     }
 
     /**
+     * 获取单位基本情况列表
+     * @param situation
+     * @param baseEntity
+     * @return
+     */
+    @RequestMapping(value = "/listUser")
+    @ResponseBody
+    public Result listUser(SituationDto situation, BaseEntity baseEntity, HttpServletRequest request){
+        Result result = new Result();
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        situation.setUser(String.valueOf(userInfo.getId()));
+        Page situationList = situationService.situationList(situation, baseEntity);
+        if (situationList.getRecords().size()>0){
+            result.setData(situationList.getRecords());
+            result.setCount((int) situationList.getTotal());
+            result.setSuccessMsg("获取数据成功");
+        }else {
+            result.setErrorMsg("无数据");
+        }
+        return result;
+    }
+
+    /**
      * 新增或者修改单位基本情况
      * @param situation
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Situation situation){
+    public Result saveOrEdit(Situation situation, HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
         Result result = new Result();
         if (situation.getId() != null && !situation.getId().equals("")){
             //修改
@@ -75,6 +102,8 @@ public class NetbaSituationController {
             }
         }else {
             //新增
+            situation.setUser(String.valueOf(userInfo.getId()));
+            situation.setTypeInfoId(userInfo.getTypeInfoId());
             boolean insert = situationService.insert(situation);
             if (insert){
                 result.setSuccessMsg("新增成功");

@@ -28,6 +28,7 @@
         <result column="ipnumber" property="ipnumber" />
         <result column="service" property="service" />
         <result column="program" property="program" />
+        <result column="user" property="user" />
     </resultMap>
 
     <!-- 通用查询映射结果 -->
@@ -56,20 +57,23 @@
         <result column="ipnumber" property="ipnumber" />
         <result column="service" property="service" />
         <result column="program" property="program" />
+        <result column="username" property="username" />
 
         <result column="typeInfoName" property="typeInfoName" />
     </resultMap>
 
     <select id="situationList" parameterType="com.document.entity.Situation" resultMap="BaseResultMapSituationDto">
-        select s.*,t.name as typeInfoName from
+        select s.*,t.name as typeInfoName,u.name as username from
          situation s,
          type_info t
+        ,user_info u
          where 1=1
          and
-         s.type_info_id=t.id and s.status=0
+         s.type_info_id=t.id and s.status=0 and s.user = u.id
         <if test="id!=null and id!=''">and s.id=#{id}</if>
         <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
         <if test="unitName!=null and unitName!=''">and s.unit_name LIKE CONCAT('%',#{unitName},'%')</if>
+        <if test="user!=null and user!=''">and s.user = #{user}</if>
     </select>
 
 </mapper>

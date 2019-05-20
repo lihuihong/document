@@ -76,6 +76,15 @@ public class Representative extends Model<Representative> {
     private String phone;
     private String status;
     private String type;
+    private String user;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getAlias() {
         return alias;

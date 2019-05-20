@@ -8,6 +8,7 @@ import com.document.dto.SingAlterationDto;
 import com.document.entity.Alteration;
 import com.document.entity.Result;
 import com.document.entity.SingAlteration;
+import com.document.entity.UserInfo;
 import com.document.service.AlterationService;
 import com.document.service.SingAlterationService;
 import org.springframework.beans.BeanUtils;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -53,13 +56,36 @@ public class SingAlterationController {
     }
 
     /**
+     * 获取列表
+     * @param singAlterationDto
+     * @param baseEntity
+     * @return
+     */
+    @RequestMapping(value = "/listUser")
+    @ResponseBody
+    public Result documentListUser(SingAlterationDto singAlterationDto, BaseEntity baseEntity, HttpServletRequest request){
+        Result result = new Result();
+        UserInfo info = (UserInfo) request.getSession().getAttribute("userInfo");
+        singAlterationDto.setUser(String.valueOf(info.getId()));
+        Page singlterationList = singAlterationService.singlterationList(singAlterationDto, baseEntity);
+        if (singlterationList.getRecords().size()>0){
+            result.setData(singlterationList.getRecords());
+            result.setCount((int) singlterationList.getTotal());
+            result.setSuccessMsg("获取数据成功");
+        }else {
+            result.setErrorMsg("无数据");
+        }
+        return result;
+    }
+
+    /**
      * 新增或者修改信息
      * @param singAlteration
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(SingAlteration singAlteration){
+    public Result saveOrEdit(SingAlteration singAlteration, HttpServletRequest request){
         Result result = new Result();
         if (singAlteration.getId() != null && !singAlteration.getId().equals("")){
             //修改
@@ -73,6 +99,8 @@ public class SingAlterationController {
             }
         }else {
             //新增
+            UserInfo info = (UserInfo) request.getSession().getAttribute("userInfo");
+            singAlteration.setUser(String.valueOf(info.getId()));
             boolean insert = singAlterationService.insert(singAlteration);
             if (insert){
                 result.setSuccessMsg("新增成功");

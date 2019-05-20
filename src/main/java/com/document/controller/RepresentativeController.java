@@ -8,6 +8,7 @@ import com.document.dto.SituationDto;
 import com.document.entity.Representative;
 import com.document.entity.Result;
 import com.document.entity.Situation;
+import com.document.entity.UserInfo;
 import com.document.service.RepresentativeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -53,13 +56,36 @@ public class RepresentativeController {
     }
 
     /**
+     * 获取列表
+     * @param representativeDto
+     * @param baseEntity
+     * @return
+     */
+    @RequestMapping(value = "/listUser")
+    @ResponseBody
+    public Result situationListByUser(RepresentativeDto representativeDto, BaseEntity baseEntity,HttpServletRequest request){
+        Result result = new Result();
+        representativeDto.setUser(String.valueOf(((UserInfo)request.getSession().getAttribute("userInfo")).getId()));
+        Page representativeList = representativeService.representativeList(representativeDto, baseEntity);
+        if (representativeList.getRecords().size()>0){
+            result.setData(representativeList.getRecords());
+            result.setCount((int) representativeList.getTotal());
+            result.setSuccessMsg("获取数据成功");
+        }else {
+            result.setErrorMsg("无数据");
+        }
+        return result;
+    }
+
+    /**
      * 新增或者修改信息
      * @param representative
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Representative representative){
+    public Result saveOrEdit(Representative representative, HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
         Result result = new Result();
         if (representative.getId() != null && !representative.getId().equals("")){
             //修改
@@ -73,6 +99,10 @@ public class RepresentativeController {
             }
         }else {
             //新增
+            representative.setUser(String.valueOf(userInfo.getId()));
+            if (representative.getTypeInfoId() == 0 && representative.getTypeInfoId() == null){
+                representative.setTypeInfoId(userInfo.getTypeInfoId());
+            }
             boolean insert = representativeService.insert(representative);
             if (insert){
                 result.setSuccessMsg("新增成功");

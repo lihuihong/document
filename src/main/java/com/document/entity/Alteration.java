@@ -101,6 +101,15 @@ public class Alteration extends Model<Alteration> {
     private String type;
     private String number;//电影管理（设备数量）
     private String numbertime;//电影管理（设备数量时间）
+    private String user;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getNumber() {
         return number;

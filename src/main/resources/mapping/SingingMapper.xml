@@ -25,6 +25,7 @@
         <result column="authorized_number" property="authorizedNumber" />
         <result column="status" property="status" />
         <result column="type" property="type" />
+        <result column="user" property="user" />
     </resultMap>
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMapSingingDto" type="com.document.dto.SingingDto">
@@ -49,17 +50,21 @@
         <result column="authorized_number" property="authorizedNumber" />
         <result column="status" property="status" />
         <result column="type" property="type" />
+        <result column="user" property="user" />
+        <result column="username" property="username" />
     </resultMap>
 
     <select id="singingList" parameterType="com.document.entity.Singing" resultMap="BaseResultMapSingingDto">
-        select s.* from
-        singing s
+        select s.*,u.name as username from
+        singing s,user_info u
         where 1=1
         and
         s.status=0
+        and s.user = u.id
         <if test="id!=null and id!=''">and s.id=#{id}</if>
         <if test="unitName!=null and unitName!=''">and s.unit_name LIKE CONCAT('%',#{unitName},'%')</if>
         <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+        <if test="user!=null and user!=''">and s.user=#{user}</if>
     </select>
 
 </mapper>

@@ -118,7 +118,15 @@ public class Singing extends Model<Singing> {
      * 审核状态 0通过 1未通过 2未审核
      */
     private Integer type;
+    private String user;
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public Integer getId() {
         return id;

@@ -88,4 +88,6 @@ public class SingingDto {
      * 审核状态 0通过 1未通过 2未审核
      */
     private Integer type;
+    private String user;
+    private String username;
 }

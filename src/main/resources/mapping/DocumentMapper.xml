@@ -12,6 +12,7 @@
         <result column="business_circles" property="businessCircles" />
         <result column="status" property="status" />
         <result column="type" property="type" />
+        <result column="user" property="user" />
     </resultMap>
 
     <!-- 通用查询映射结果 -->
@@ -24,19 +25,24 @@
         <result column="business_circles" property="businessCircles" />
         <result column="status" property="status" />
         <result column="type" property="type" />
+        <result column="user" property="user" />
+        <result column="username" property="username" />
 
         <result column="typeInfoName" property="typeInfoName" />
     </resultMap>
 
     <select id="documentList" parameterType="com.document.entity.Document" resultMap="BaseResultMapDocumentDto">
-        select s.*,t.name as typeInfoName from
+        select s.*,t.name as typeInfoName,u.name as username from
         document s,
         type_info t
+        ,user_info u
         where 1=1
         and
         s.type_info_id=t.id and s.status=0
+        and s.user = u.id
         <if test="id!=null and id!=''">and s.id=#{id}</if>
         <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+        <if test="user!=null and user!=''">and s.user = #{user}</if>
     </select>
 
 </mapper>

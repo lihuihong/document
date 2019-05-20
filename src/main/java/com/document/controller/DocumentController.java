@@ -8,6 +8,7 @@ import com.document.dto.PunishmentDto;
 import com.document.entity.Document;
 import com.document.entity.Punishment;
 import com.document.entity.Result;
+import com.document.entity.UserInfo;
 import com.document.service.DocumentService;
 import com.document.service.PunishmentService;
 import org.springframework.beans.BeanUtils;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -54,13 +57,37 @@ public class DocumentController {
     }
 
     /**
+     * 获取列表
+     * @param documentDto
+     * @param baseEntity
+     * @return
+     */
+    @RequestMapping(value = "/listUser")
+    @ResponseBody
+    public Result documentListByUser(DocumentDto documentDto, BaseEntity baseEntity, HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        Result result = new Result();
+        documentDto.setUser(String.valueOf(userInfo.getId()));
+        Page documentList = documentService.documentList(documentDto, baseEntity);
+        if (documentList.getRecords().size()>0){
+            result.setData(documentList.getRecords());
+            result.setCount((int) documentList.getTotal());
+            result.setSuccessMsg("获取数据成功");
+        }else {
+            result.setErrorMsg("无数据");
+        }
+        return result;
+    }
+
+    /**
      * 新增或者修改信息
      * @param document
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Document document){
+    public Result saveOrEdit(Document document,HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
         Result result = new Result();
         if (document.getId() != null && !document.getId().equals("")){
             //修改
@@ -74,6 +101,7 @@ public class DocumentController {
             }
         }else {
             //新增
+            document.setUser(String.valueOf(userInfo.getId()));
             boolean insert = documentService.insert(document);
             if (insert){
                 result.setSuccessMsg("新增成功");

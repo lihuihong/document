@@ -37,7 +37,7 @@
                         <div class="col-lg-9 col-sm-9 col-md-9">
                             <input type="hidden" class="form-control" id="id" name="id" placeholder="id">
                             <input type="text" class="form-control" id="unitName" name="unitName"
-                                   placeholder="请输入单位名称)">
+                                   placeholder="请输入单位名称">
                         </div>
                     </div>
                     <div class="form-group">
@@ -144,23 +144,23 @@
 <script src="/view/js/pickers-init.js"></script>
 <script src="/view/js/layer/layer.js"></script>
 <script>
-    $('#submit').on('click', function () {
+    $('#submit').on('click',function () {
         $.ajax({
-            url: '/view/json/submit.json',
-            type: 'get',
-            data: '',
-            dataType: "json",
-            beforeSend: function () {
+            url:'/document/netba/alteration/saveOrEdit',
+            type:'post',
+            data:$("#form").serialize(),
+            dataType:"json",
+            beforeSend:function(){
                 //do something
             },
-            success: function (data) {
+            success:function(data){
                 //do something
-                if (data.code == 0) {
+                if(data.code==0){
                     layer.confirm('确定要保存？', {
                         skin: 'demo-class',
-                        shade: -1,
-                        btn: ['确定', '取消'] //按钮
-                        , yes: function () {
+                        shade:-1,
+                        btn: ['确定','取消'] //按钮
+                        ,yes:function () {
                             layer.msg('保存成功，请等待管理员审核!')
                         }
                     });
@@ -168,12 +168,56 @@
                     layer.msg('保存失败')
                 }
             },
-            error: function (data) {
+            error:function(data){
                 //do something
-                layer.msg('与服务器连接失败', {icon: 2});
+                layer.msg('与服务器连接失败',{icon: 2});
             }
         });
         return false;
+    });
+
+    $.ajax({
+        url:'/document/netba/alteration/listUser',
+        type:'post',
+        dataType:"json",
+        data:{"page":1,"limit":999},
+        beforeSend:function(){
+            //do something
+        },
+        success:function(data){
+            //do something
+            if(data.code==0){
+                if (data.data[0].type === "0") {
+                    layer.open({
+                        type: 1,
+                        closeBtn: 0,
+                        title: '信息',
+                        content: '<div style="margin:20px 20px">审核成功</div>' //这里content是一个普通的String
+                    });
+                }else if (data.data[0].type === "1") {
+                    layer.open({
+                        type: 1,
+                        closeBtn: 0,
+                        title: '信息',
+                        content: '<div style="margin:20px 20px">审核失败</div>' //这里content是一个普通的String
+                    });
+                }else if (data.data[0].type === "2") {
+                    layer.open({
+                        type: 1,
+                        closeBtn: 0,
+                        title: '信息',
+                        content: '<div style="margin:20px 20px">未审核</div>' //这里content是一个普通的String
+                    });
+                }
+
+            } else {
+
+            }
+        },
+        error:function(data){
+            //do something
+            layer.msg('与服务器连接失败',{icon: 2});
+        }
     });
 </script>
 </body>

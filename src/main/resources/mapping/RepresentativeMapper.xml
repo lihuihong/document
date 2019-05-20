@@ -20,6 +20,7 @@
         <result column="status" property="status" />
         <result column="type" property="type" />
         <result column="alias" property="alias" />
+        <result column="user" property="user" />
     </resultMap>
 
     <!-- 通用查询映射结果 -->
@@ -40,20 +41,25 @@
         <result column="status" property="status" />
         <result column="type" property="type" />
         <result column="alias" property="alias" />
+        <result column="user" property="user" />
+        <result column="username" property="username" />
 
         <result column="typeInfoName" property="typeInfoName" />
     </resultMap>
 
     <select id="representativeList" parameterType="com.document.entity.Representative" resultMap="BaseResultMapRepresentativeDto">
-        select s.*,t.name as typeInfoName from
+        select s.*,t.name as typeInfoName,u.name as username from
         representative s,
-        type_info t
+        type_info t,user_info u
         where 1=1
         and
         s.type_info_id=t.id and s.status=0
+        and s.user = u.id
         <if test="id!=null and id!=''">and  s.id=#{id}</if>
         <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
         <if test="name!=null and name!=''">and s.name LIKE CONCAT('%',#{name},'%')</if>
+        <if test="alias!=null and alias!=''">and s.alias = #{alias}</if>
+        <if test="user!=null and user!=''">and s.user = #{user}</if>
         <if test="alias!=null and alias!=''">and s.alias = #{alias}</if>
     </select>
 

@@ -5,10 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.document.dto.BaseEntity;
 import com.document.dto.PunishmentDto;
 import com.document.dto.RepresentativeDto;
-import com.document.entity.Punishment;
-import com.document.entity.Representative;
-import com.document.entity.Result;
-import com.document.entity.Situation;
+import com.document.entity.*;
 import com.document.service.PunishmentService;
 import com.document.service.RepresentativeService;
 import org.springframework.beans.BeanUtils;
@@ -17,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -55,13 +54,37 @@ public class PunishmentController {
     }
 
     /**
+     * 获取列表
+     * @param punishmentDto
+     * @param baseEntity
+     * @return
+     */
+    @RequestMapping(value = "/listUser")
+    @ResponseBody
+    public Result punishmentListUser(PunishmentDto punishmentDto, BaseEntity baseEntity, HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        Result result = new Result();
+        punishmentDto.setUser(String.valueOf(userInfo.getId()));
+        Page punishmentList = punishmentService.punishmentList(punishmentDto, baseEntity);
+        if (punishmentList.getRecords().size()>0){
+            result.setData(punishmentList.getRecords());
+            result.setCount((int) punishmentList.getTotal());
+            result.setSuccessMsg("获取数据成功");
+        }else {
+            result.setErrorMsg("无数据");
+        }
+        return result;
+    }
+
+    /**
      * 新增或者修改信息
      * @param punishment
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Punishment punishment){
+    public Result saveOrEdit(Punishment punishment, HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
         Result result = new Result();
         if (punishment.getId() != null && !punishment.getId().equals("")){
             //修改
@@ -75,6 +98,7 @@ public class PunishmentController {
             }
         }else {
             //新增
+            punishment.setUser(String.valueOf(userInfo.getId()));
             boolean insert = punishmentService.insert(punishment);
             if (insert){
                 result.setSuccessMsg("新增成功");

@@ -8,6 +8,7 @@ import com.document.dto.SituationDto;
 import com.document.entity.Result;
 import com.document.entity.Singing;
 import com.document.entity.Situation;
+import com.document.entity.UserInfo;
 import com.document.service.SingingService;
 import com.document.service.SituationService;
 import org.springframework.beans.BeanUtils;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -55,13 +58,36 @@ public class SingingController {
     }
 
     /**
+     * 获取单位基本情况列表
+     * @param singingDto
+     * @param baseEntity
+     * @return
+     */
+    @RequestMapping(value = "/listUser")
+    @ResponseBody
+    public Result situationListByUser(SingingDto singingDto, BaseEntity baseEntity,HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        Result result = new Result();
+        singingDto.setUser(String.valueOf(userInfo.getId()));
+        Page singingList = singingService.singingList(singingDto, baseEntity);
+        if (singingList.getRecords().size()>0){
+            result.setData(singingList.getRecords());
+            result.setCount((int) singingList.getTotal());
+            result.setSuccessMsg("获取数据成功");
+        }else {
+            result.setErrorMsg("无数据");
+        }
+        return result;
+    }
+
+    /**
      * 新增或者修改单位基本情况
      * @param singing
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Singing singing){
+    public Result saveOrEdit(Singing singing, HttpServletRequest request){
         Result result = new Result();
         if (singing.getId() != null && !singing.getId().equals("")){
             //修改
@@ -75,6 +101,8 @@ public class SingingController {
             }
         }else {
             //新增
+            UserInfo info = (UserInfo) request.getSession().getAttribute("userInfo");
+            singing.setUser(String.valueOf(info.getId()));
             boolean insert = singingService.insert(singing);
             if (insert){
                 result.setSuccessMsg("新增成功");
