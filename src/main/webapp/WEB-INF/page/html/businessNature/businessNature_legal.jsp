@@ -44,6 +44,10 @@
     <link rel="stylesheet" type="text/css" href="/view/js/bootstrap-colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css" href="/view/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
     <link rel="stylesheet" type="text/css" href="/view/js/bootstrap-datetimepicker/css/datetimepicker-custom.css" />
+    <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/resources/css/login.css" media="all">
+
+
 </head>
 <body>
 <div class="row" style="margin: 0px;padding: 0px">
@@ -132,26 +136,20 @@
                 </div>
                 <div class="col-lg-6 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="photo" class="col-lg-3 col-sm-3 col-md-3 control-label">照片</label>
-                        <div class="col-lg-9 col-sm-9 col-md-9">
-                            <div class="fileupload fileupload-new" data-provides="fileupload" id="nature">
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" id="photo" name="photo"/>
-                                </div>
-                                <div class="fileupload-preview fileupload-exists thumbnail"
-                                     style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                <div>
-                                    <span class="btn btn-default btn-file">
-                                        <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
-                                        <span class="fileupload-exists"><i class="fa fa-undo"></i> 更改</span>
-                                        <input type="file" class="default"/>
-                                    </span>
-                                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> 移除</a>
-                                </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn" id="test1">
+                                    <i class="layui-icon">&#xe67c;</i>上传照片
+                                </button>
                             </div>
-                            <br/>
-                            <span class="label label-danger ">注意!</span>
-                            <span>需要上传2寸照片</span>
+                            <input type="hidden" id="photo" name="photo" value="" />
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <img class="layui-upload-img" width="100px" height="80px"
+                                     id="demo1" />
+                                <p id="demoText"></p>
+                            </div>
                         </div>
                     </div>
 
@@ -196,8 +194,42 @@
 <script type="text/javascript" src="/view/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 <!--初始化时间控件-->
 <script src="/view/js/pickers-init.js"></script>
-<script src="/view/js/layer/layer.js"></script>
+<script src="/resources/layui/layui.js" charset="utf-8"></script>
 <script>
+    var  layer;
+    layui.use(['form', 'upload','laydate','layer'], function() {
+        var form = layui.form;
+        var $ = layui.jquery;
+        var upload = layui.upload;
+        var laydate = layui.laydate;
+        layer= layui.layer;
+        var uploadInst = upload.render({
+            elem: '#test1' //绑定元素
+            ,url:'/admin/sys/upload/img' //上传接口
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+            }
+            ,done: function(res){
+                //如果上传失败
+                if(res.code > 0){
+                    return layer.msg('上传失败,(可能原因：图片格式不正确)');
+                }
+                //上传成功
+                document.getElementById("photo").value = res.url;//隐藏域保存文件路径
+
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败,(可能原因：图片格式不正确)</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
     $('#submit').on('click',function () {
         $.ajax({
             url:'/document/representative/saveOrEdit',
@@ -272,6 +304,7 @@
             //do something
             layer.msg('与服务器连接失败',{icon: 2});
         }
+    });
     });
 </script>
 </body>

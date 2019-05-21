@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <label for="revocationPermit" class="col-lg-3 col-sm-3 col-md-3 control-label" title="吊销许可证">吊销许可证</label>
                         <div class="col-lg-9 col-sm-9 col-md-9">
-                            <input type="checkbox" class="js-switch" id="revocationPermit" name="revocationPermit"
+                            <input type="checkbox" class="js-switch" value="0" onclick="this.value=(this.value==0)?1:0" id="revocationPermit" name="revocationPermit"
                                    checked/>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                         <label for="confiscationProperty" class="col-lg-3 col-sm-3 col-md-3 control-label"
                                title="没收非法财物">没收非法财物</label>
                         <div class="col-lg-9 col-sm-9 col-md-9">
-                            <input type="file" id="confiscationProperty" name="confiscationProperty"
+                            <input type="file" id="confiscationProperty"  onchange="startRead()" name="confiscationProperty"
                                    placeholder="请输入没收非法财物">
                         </div>
                     </div>
@@ -191,6 +191,43 @@
         });
         return false;
     });
+    function startRead() {
+        var fileDom=document.getElementById('confiscationProperty');
+        if (fileDom){
+            fileHandle(fileDom);
+        }
+    }
+
+    //文件处理
+    function fileHandle(fileDom) {
+        //读取计算机文件
+        var file=fileDom.files[0];
+        var reader=new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadstart=function () {
+            console.log('文件上传处理......')
+            $.ajax({
+                url:'/file/upload',
+                type:'post',
+                dataType:"json",
+                data:{"file":file.name},
+                beforeSend:function(){
+                    //do something
+                },
+                error:function(data){
+                    //do something
+                    layer.msg('与服务器连接失败',{icon: 2});
+                }
+            });
+        };
+        //操作完成
+        reader.onload = function(e){
+            //file 对象的属性
+            //img.setAttribute('src',reader.result);
+        };
+    }
+
+
 
     $.ajax({
         url:'/document/punishment/listUser',

@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <label for="revocationPermit" class="col-lg-3 col-sm-3 col-md-3 control-label" title="吊销许可证">吊销许可证</label>
                         <div class="col-lg-9 col-sm-9 col-md-9">
-                            <input type="checkbox" class="js-switch" id="revocationPermit" name="revocationPermit"
+                            <input type="checkbox" class="js-switch" value="0" onclick="this.value=(this.value==0)?1:0" id="revocationPermit" name="revocationPermit"
                                    checked/>
                         </div>
                     </div>
