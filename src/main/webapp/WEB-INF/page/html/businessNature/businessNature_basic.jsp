@@ -31,7 +31,7 @@
         </header>
         <div class="panel-body">
             <form class="form-horizontal" role="form" id="form">
-                <input type="hidden" name="typeInfoId" value="3">
+                <input type="hidden" name="typeInfoId" value="6">
                 <div class="col-lg-6 col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="unitName" class="col-lg-3 col-sm-3 col-md-3  control-label"
@@ -230,7 +230,7 @@
         url:'/document/netba/situation/listUser',
         type:'post',
         dataType:"json",
-        data:{"page":1,"limit":999,"typeInfoId":3},
+        data:{"page":1,"limit":999,"typeInfoId":6},
         beforeSend:function(){
             //do something
         },

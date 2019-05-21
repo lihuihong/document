@@ -8,6 +8,7 @@ import com.document.dto.PlacesDto;
 import com.document.entity.Places;
 import com.document.entity.PlacesAlteration;
 import com.document.entity.Result;
+import com.document.entity.UserInfo;
 import com.document.service.PlacesAlterationService;
 import com.document.service.PlacesService;
 import org.springframework.beans.BeanUtils;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -54,13 +57,36 @@ public class PlacesController {
     }
 
     /**
+     * 获取列表
+     * @param placesDto
+     * @param baseEntity
+     * @return
+     */
+    @RequestMapping(value = "/listUser")
+    @ResponseBody
+    public Result listUser(PlacesDto placesDto, BaseEntity baseEntity, HttpServletRequest request){
+        Result result = new Result();
+        UserInfo info = (UserInfo) request.getSession().getAttribute("userInfo");
+        placesDto.setUser(String.valueOf(info.getId()));
+        Page placesList = placesService.placesList(placesDto, baseEntity);
+        if (placesList.getRecords().size()>0){
+            result.setData(placesList.getRecords());
+            result.setCount((int) placesList.getTotal());
+            result.setSuccessMsg("获取数据成功");
+        }else {
+            result.setErrorMsg("无数据");
+        }
+        return result;
+    }
+
+    /**
      * 新增或者修改信息
      * @param places
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(Places places){
+    public Result saveOrEdit(Places places, HttpServletRequest request){
         Result result = new Result();
         if (places.getId() != null && !places.getId().equals("")){
             //修改
@@ -74,6 +100,9 @@ public class PlacesController {
             }
         }else {
             //新增
+            //新增
+            UserInfo info = (UserInfo) request.getSession().getAttribute("userInfo");
+            places.setUser(String.valueOf(info.getId()));
             boolean insert = placesService.insert(places);
             if (insert){
                 result.setSuccessMsg("新增成功");

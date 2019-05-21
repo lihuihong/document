@@ -77,7 +77,15 @@ public class PlacesAlteration extends Model<PlacesAlteration> {
     private String boxQuantityTime;
     private Integer status;
     private Integer type;
+    private String user;
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public Integer getId() {
         return id;

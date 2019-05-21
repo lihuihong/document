@@ -45,12 +45,12 @@
             <div class="left-side sticky-left-side">
                 <div class="left-side-inner">
                     <ul class="nav nav-pills nav-stacked custom-nav">
-                        <li class="active"><a href="/web/page/html/publication/printing_basic " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>单位经营情况</span></a></li>
-                        <li><a href="/web/page/html/publication/printing_legal " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>法定代表人</span></a></li>
-                        <li><a href="/web/page/html/publication/printing_person " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>负责人</span></a></li>
-                        <li><a href="/web/page/html/publication/printing_approval " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>其他审批文件</span></a></li>
-                        <li><a href="/web/page/html/publication/printing_punished " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>受处罚情况</span></a></li>
-                        <li><a href="/web/page/html/publication/printing_change " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>变更情况</span></a></li>
+                        <li class="active"><a href="/web/page/html/printing/printing_basic " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>单位经营情况</span></a></li>
+                        <li><a href="/web/page/html/printing/printing_legal " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>法定代表人</span></a></li>
+                        <li><a href="/web/page/html/printing/printing_person " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>负责人</span></a></li>
+                        <li><a href="/web/page/html/printing/printing_approval " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>其他审批文件</span></a></li>
+                        <li><a href="/web/page/html/printing/printing_punished " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>受处罚情况</span></a></li>
+                        <li><a href="/web/page/html/printing/printing_change " target="myIframe"><i class="fa  fa-arrow-circle-o-right"></i> <span>变更情况</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -58,7 +58,7 @@
         <div class="col-lg-9 col-md-9 col-sm-9">
             <div class="main-content">
                 <section class="wrapper1">
-                    <iframe src="/web/page/html/publication/printing_basic " id="external-frame" name="myIframe" frameborder="0" width="100%" height="100%"></iframe>
+                    <iframe src="/web/page/html/printing/printing_basic " id="external-frame" name="myIframe" frameborder="0" width="100%" height="100%"></iframe>
                 </section>
             </div>
         </div>

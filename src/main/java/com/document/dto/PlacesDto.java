@@ -104,5 +104,8 @@ public class PlacesDto {
      */
     private Integer type;
 
+    private String user;
+    private String username;
+
 
 }

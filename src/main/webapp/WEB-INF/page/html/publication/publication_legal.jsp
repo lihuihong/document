@@ -53,7 +53,7 @@
         </header>
         <div class="panel-body">
             <form class="form-horizontal" role="form" id="form">
-                <input type="hidden" name="typeInfoId" value="5">
+                <input type="hidden" name="typeInfoId" value="8">
                 <input type="hidden" name="alias" value="0">
                 <div class="col-lg-6 col-sm-6 col-md-6">
                     <div class="form-group">
@@ -234,7 +234,7 @@
         url:'/document/representative/listUser',
         type:'post',
         dataType:"json",
-        data:{"page":1,"limit":999,"alias":0,"typeInfoId":5},
+        data:{"page":1,"limit":999,"alias":0,"typeInfoId":8},
         beforeSend:function(){
             //do something
         },

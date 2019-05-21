@@ -46,6 +46,7 @@
                 {field: 'index', title: '排序', align: 'center', type: 'numbers'},
                 {field: 'id', title: 'id', align: 'center', hide: true},
                 {field: 'unitName', title: '单位名称', align: 'center'},
+                {field:'username', title: '所属用户', align:'center'},
                 {field: 'unitNameTime', title: '单位名称时间', align: 'center', hide: true},
                 {field: 'legalRepresentative', title: '法定代表人', align: 'center'},
                 {field: 'representativeTime', title: '法定代表人时间', align: 'center', hide: true},

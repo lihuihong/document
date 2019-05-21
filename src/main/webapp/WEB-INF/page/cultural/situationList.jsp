@@ -60,6 +60,7 @@
                 {field: 'index', title: '排序', align:'center', type: 'numbers'},
                 {field: 'id', title: 'id', align:'center',hide:true},
                 {field:'unitName', title: '名称', align:'center'},
+                {field:'username', title: '所属用户', align:'center'},
                 {field:'businessAddress', title: '地址', align:'center'},
                 {field:'workTelephone', title: '类别', align:'center',hide:true},
                 {field:'operatingArea', title: '面积（m2）', align:'center',hide:true},

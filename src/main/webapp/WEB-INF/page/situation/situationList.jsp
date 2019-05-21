@@ -46,6 +46,7 @@
                 {field: 'index', title: '排序', align:'center', type: 'numbers'},
                 {field: 'id', title: 'id', align:'center',hide:true},
                 {field:'typeInfoName', title: '分类名称', align:'center'},
+                {field:'username', title: '所属用户', align:'center'},
                 {field:'unitName', title: '单位名称', align:'center'},
                 {field:'businessAddress', title: '经营地址', align:'center'},
                 {field:'management', title: '经营性质', align:'center',hide:true,templet: function(d){

@@ -18,6 +18,7 @@
         <result column="box_quantity_time" property="boxQuantityTime" />
         <result column="status" property="status" />
         <result column="type" property="type" />
+        <result column="user" property="user" />
     </resultMap>
 
     <!-- 通用查询映射结果 -->
@@ -36,18 +37,21 @@
         <result column="box_quantity_time" property="boxQuantityTime" />
         <result column="status" property="status" />
         <result column="type" property="type" />
+        <result column="user" property="user" />
+        <result column="username" property="username" />
 
     </resultMap>
 
     <select id="placesAlterationList" parameterType="com.document.entity.PlacesAlteration" resultMap="BaseResultMapPlacesAlterationDto">
-        select s.* from
-        places_alteration s
+        select s.*,u.name as username from
+        places_alteration s,user_info u
         where 1=1
         and
-        s.status=0
+        s.status=0 and s.user = u.id
         <if test="id!=null and id!=''">and s.id=#{id}</if>
         <if test="unitName!=null and unitName!=''">and s.unit_name LIKE CONCAT('%',#{unitName},'%')</if>
         <if test="typeInfoId!=null and typeInfoId!=''">and s.type_info_id=#{typeInfoId}</if>
+        <if test="user!=null and user!=''">and s.user=#{user}</if>
     </select>
 
 </mapper>

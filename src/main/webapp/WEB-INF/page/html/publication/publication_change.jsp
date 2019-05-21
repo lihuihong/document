@@ -31,7 +31,7 @@
         </header>
         <div class="panel-body">
             <form class="form-horizontal" role="form" id="form">
-                <input type="hidden" name="typeInfoId" value="5">
+                <input type="hidden" name="typeInfoId" value="8">
                 <div class="col-lg-6 col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="unitName" class="col-lg-3 col-sm-3 col-md-3  control-label" title="单位名称">单位名称</label>
@@ -167,7 +167,7 @@
         url:'/document/netba/alteration/listUser',
         type:'post',
         dataType:"json",
-        data:{"page":1,"limit":999,"typeInfoId":5},
+        data:{"page":1,"limit":999,"typeInfoId":8},
         beforeSend:function(){
             //do something
         },

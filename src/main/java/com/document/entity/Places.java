@@ -118,6 +118,16 @@ public class Places extends Model<Places> {
      */
     private Integer type;
 
+    private String user;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
 
     public Integer getId() {
         return id;

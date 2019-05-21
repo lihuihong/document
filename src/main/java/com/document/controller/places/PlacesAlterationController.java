@@ -8,6 +8,7 @@ import com.document.dto.SingAlterationDto;
 import com.document.entity.PlacesAlteration;
 import com.document.entity.Result;
 import com.document.entity.SingAlteration;
+import com.document.entity.UserInfo;
 import com.document.service.PlacesAlterationService;
 import com.document.service.SingAlterationService;
 import org.springframework.beans.BeanUtils;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -54,13 +57,36 @@ public class PlacesAlterationController {
     }
 
     /**
+     * 获取列表
+     * @param placesAlterationDto
+     * @param baseEntity
+     * @return
+     */
+    @RequestMapping(value = "/listUser")
+    @ResponseBody
+    public Result listUser(PlacesAlterationDto placesAlterationDto, BaseEntity baseEntity, HttpServletRequest request){
+        Result result = new Result();
+        UserInfo info = (UserInfo) request.getSession().getAttribute("userInfo");
+        placesAlterationDto.setUser(String.valueOf(info.getId()));
+        Page placesAlterationList = placesAlterationService.placesAlterationList(placesAlterationDto, baseEntity);
+        if (placesAlterationList.getRecords().size()>0){
+            result.setData(placesAlterationList.getRecords());
+            result.setCount((int) placesAlterationList.getTotal());
+            result.setSuccessMsg("获取数据成功");
+        }else {
+            result.setErrorMsg("无数据");
+        }
+        return result;
+    }
+
+    /**
      * 新增或者修改信息
      * @param placesAlteration
      * @return
      */
     @RequestMapping(value = "/saveOrEdit")
     @ResponseBody
-    public Result saveOrEdit(PlacesAlteration placesAlteration){
+    public Result saveOrEdit(PlacesAlteration placesAlteration, HttpServletRequest request){
         Result result = new Result();
         if (placesAlteration.getId() != null && !placesAlteration.getId().equals("")){
             //修改
@@ -74,6 +100,8 @@ public class PlacesAlterationController {
             }
         }else {
             //新增
+            UserInfo info = (UserInfo) request.getSession().getAttribute("userInfo");
+            placesAlteration.setUser(String.valueOf(info.getId()));
             boolean insert = placesAlterationService.insert(placesAlteration);
             if (insert){
                 result.setSuccessMsg("新增成功");

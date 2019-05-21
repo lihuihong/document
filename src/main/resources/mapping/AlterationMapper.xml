@@ -48,7 +48,7 @@
     </resultMap>
 
     <select id="alterationList" parameterType="com.document.entity.Alteration" resultMap="BaseResultMapAlterationDto">
-        select s.*,t.name as typeInfoName from
+        select s.*,t.name as typeInfoName,u.name as username from
         alteration s,
         type_info t
         ,user_info u

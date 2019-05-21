@@ -60,6 +60,7 @@
                 {field: 'index', title: '排序', align: 'center', type: 'numbers'},
                 {field: 'id', title: 'id', align: 'center', hide: true},
                 {field: 'revocationPermit', title: '吊销许可证', templet: '#switchType', align: 'center'},
+                {field:'username', title: '所属用户', align:'center'},
                 {field: 'typeInfoName', title: '分类名称', align: 'center'},
                 {field: 'warning', title: '警告（次）', align: 'center'},
                 {field: 'warningTime', title: '警告时间', align: 'center'},

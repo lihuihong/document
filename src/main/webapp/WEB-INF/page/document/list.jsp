@@ -46,6 +46,7 @@
                 {field: 'index', title: '排序', align: 'center', type: 'numbers'},
                 {field: 'id', title: 'id', align: 'center', hide: true},
                 {field: 'typeInfoName', title: '分类名称', align: 'center'},
+                {field:'username', title: '所属用户', align:'center'},
                 {field: 'fireControl', title: '消防编号', align: 'center'},
                 {field: 'environmentalProtection', title: '环保编号', align: 'center'},
                 {field: 'hygiene', title: '卫生编号', align: 'center'},

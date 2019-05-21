@@ -54,7 +54,7 @@
         <div class="panel-body">
             <form class="form-horizontal" role="form" id="form">
                 <input type="hidden" name="alias" value="1">
-                <input type="hidden" name="typeInfoId" value="2">
+                <input type="hidden" name="typeInfoId" value="5">
                 <div class="col-lg-6 col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="name" class="col-lg-3 col-sm-3 col-md-3  control-label" title="姓名">姓名</label>
@@ -234,7 +234,7 @@
         url:'/document/representative/listUser',
         type:'post',
         dataType:"json",
-        data:{"page":1,"limit":999,"alias":1,"typeInfoId":2},
+        data:{"page":1,"limit":999,"alias":1,"typeInfoId":5},
         beforeSend:function(){
             //do something
         },
