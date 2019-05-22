@@ -65,7 +65,7 @@
                         <i class="layui-icon layui-icon-theme"></i><label>控制台</label>
                     </a>
                 </li>
-                <li data-name="template" class="layui-nav-item">
+                <%--<li data-name="template" class="layui-nav-item">
                     <a href="javascript:;" lay-tips="分类管理">
                         <i class="layui-icon layui-icon-util"></i><label>分类管理</label>
                     </a>
@@ -76,7 +76,7 @@
                             </a>
                         </dd>
                     </dl>
-                </li>
+                </li>--%>
                 <li data-name="template" class="layui-nav-item">
                     <a href="javascript:;" lay-tips="网吧管理">
                         <i class="layui-icon layui-icon-util"></i><label>网吧管理</label>

@@ -29,7 +29,7 @@
         <div class="layui-col-md12">
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md8">
-                    <div class="layui-card">
+                    <%--<div class="layui-card">
                         <div class="layui-card-header">快捷菜单</div>
                         <div class="layui-card-body">
                             <div class="layui-carousel layadmin-carousel layadmin-shortcut">
@@ -72,7 +72,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div>--%>
                 <div class="layui-col-md4">
                     <div class="layui-card">
                         <div class="layui-card-header">版本信息</div>
