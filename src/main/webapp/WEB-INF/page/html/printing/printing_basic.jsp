@@ -80,13 +80,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-lg-3 col-sm-3 col-md-3 control-label">分类</label>
+                        <label for="child" class="col-lg-3 col-sm-3 col-md-3 control-label">分类</label>
                         <div class="col-lg-9 col-sm-9 col-md-9">
-                            <select class="form-control" id="name">
-                                <option value="" selected>请选择分类</option>
-                                <option value="1">出版物</option>
-                                <option value="2">包装装潢</option>
-                                <option value="3">其它印刷</option>
+                            <select class="form-control" id="child" name="child">
+                                <option value="">请选择分类</option>
                             </select>
                         </div>
                     </div>
@@ -201,6 +198,24 @@
             }
         });
         return false;
+    });
+
+    $.ajax({
+        url:'/document/typeInfoOne/list',
+        type:'post',
+        data:{"page":1,"limit":99999999,"typeInfoId":7},
+        dataType:"json",
+        success:function(data){
+            var html = '';
+            if(data.code===0){
+                $.each(data.data,function(index,value){
+                    html += '<option value="'+value.id+'">'+value.name+'</option>';
+                    //alert(html);
+                });
+                //alert(html);
+                $('#child').html(html);
+            }
+        },
     });
 
     $.ajax({

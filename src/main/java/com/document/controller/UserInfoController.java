@@ -52,6 +52,21 @@ public class UserInfoController {
         return result;
     }
 
+    @RequestMapping(value = "/add")
+    @ResponseBody
+    public Result add(UserInfo userInfo, HttpServletRequest request){
+        Result result = new Result();
+        userInfo.setType("1");
+        boolean insert = userInfoService.insert(userInfo);
+        if (insert) {
+            request.getSession().setAttribute("userInfo", userInfo);
+            result.setSuccessMsg("注册成功，并已成功登录。");
+        } else {
+            result.setErrorMsg("注册失败");
+        }
+        return result;
+    }
+
     /**
      * 修改密码
      *

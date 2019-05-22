@@ -19,32 +19,20 @@ $(document).ready(function () {
 // 退出登录
 $('.layout').on('click', function () {
     $.ajax({
-        url: '../../json/submit.json',
+        url: '/user/logout',
         type: 'get',
-        data: '',
-        dataType: "json",
-        beforeSend: function () {
-            //do something
-        },
+        //验证用户名是否可用
         success: function (data) {
-            //do something
-            if (data.code == 0) {
-                layer.confirm('确定要退出登录？', {
-                    skin: 'demo-class',
-                    shade: -1,
-                    btn: ['确定', '取消'] //按钮
-                    , yes: function () {
-                        window.location.href = '../../login.html';
-                    }
-                });
+            if (data.code === 0) {
+                layer.msg("退出成功")
+                setTimeout(function () {
+                    window.location.href = '/';
+                }, 1000);
             } else {
-                layer.msg('退出失败');
+                layer.msg(data.message)
             }
-        },
-        error: function (data) {
-            //do something
-            layer.msg('与服务器连接失败', {icon: 2});
+
         }
-    });
+    })
     return false;
 });

@@ -30,7 +30,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                        <li><a href="/view/index "><i class="fa fa-user"></i> 返回面板</a></li>
+                        <li><a href="/typeInfo/typeListView"><i class="fa fa-user"></i> 返回面板</a></li>
                         <li><a href="#" class="layout"><i class="fa fa-sign-out"></i> 退出登录</a></li>
                     </ul>
                 </li>

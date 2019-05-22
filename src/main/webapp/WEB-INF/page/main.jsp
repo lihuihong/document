@@ -390,7 +390,7 @@
                     if (data.code === 0) {
                         layer.msg("退出成功")
                         setTimeout(function () {
-                            window.location.href = "${pageContext.request.contextPath}/web/page/login";
+                            window.location.href = "${pageContext.request.contextPath}/web/page/html/login";
                         }, 1000);
                     } else {
                         layer.msg(data.message)
