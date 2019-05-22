@@ -13,9 +13,8 @@
     <title>登录页</title>
     <link rel="stylesheet" href="/resources/layui/css/layui.css">
     <link rel="stylesheet" href="/resources/frame/css/style.css">
-
 </head>
-<body>
+<body class="login-body">
 
 <div class="login-main">
     <header class="layui-elip">登录</header>

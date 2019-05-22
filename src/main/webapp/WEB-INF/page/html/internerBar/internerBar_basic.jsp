@@ -90,7 +90,7 @@
                     <div class="form-group">
                         <label for="province" class="col-lg-3 col-sm-3  col-md-3 control-label">城市</label>
                         <div class="col-lg-9 col-sm-9 col-md-9">
-                            <select class="form-control" id="province" name="address">
+                            <select class="form-control" id="province" name="province">
                                 <option value="">请选择省市</option>
                             </select>
                         </div>
@@ -98,7 +98,7 @@
                     <div class="form-group">
                         <label for="rules" class="col-lg-3 col-sm-3 col-md-3 control-label">规章制度</label>
                         <div class="col-lg-9 col-sm-9 col-md-9">
-                            <input type="checkbox" class="js-switch" checked id="rules" name="rules"/>
+                            <input type="checkbox" class="js-switch" value="0" id="rules" name="rules"/>
                         </div>
                     </div>
                 </div>
@@ -199,6 +199,45 @@
 <script src="/view/js/pickers-init.js"></script>
 <script src="/view/js/layer/layer.js"></script>
 <script>
+
+    // select联动
+    $(function () {
+        $.ajax({
+            url:'/view/json/select.json',
+            type:'get',
+            data:{},
+            success:function (res) {
+                /*console.log(res.provinces.province);*/
+                //初始化 所有的省的数据
+                $.each(res.provinces.province,function (keyPro,ssqname) {
+                    /*console.log("yi:"+ssqname.ssqname);
+                    console.log("yi:"+ssqname.ssqid);
+                    console.log("er:"+keyPro);*/
+                    var $option = "<option value="+ssqname.ssqid+">"+ssqname.ssqname+"</option>";
+                    $("#province").append($option);
+                })
+                //省的数据改变时加载市的数据
+                $("#province").on("change",function (e) {
+                    var ss = $(this).children('option:selected').val();
+                    $("#city").empty();
+                    $.each(res.provinces.province,function (i,val) {
+                        $.each(val.cities.city,function (i,info) {
+                            console.log("er:"+info.ssqid);
+                            if (info.ssqid.slice(0,2) === ss.slice(0,2)) {
+                                $.each(info.areas.area,function (i,infossqname) {
+                                    $("#city").append("<option value="+infossqname.ssqname+">"+infossqname.ssqname+"</option>")
+                                })
+                            }
+
+                        })
+                    })
+                })
+                //上来后初始化一下城市的数据
+                //$("#province").triggerHandler("change");
+            }
+        });
+    })
+
     $('#submit').on('click',function () {
         $.ajax({
             url:'/document/netba/situation/saveOrEdit',

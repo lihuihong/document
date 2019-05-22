@@ -62,11 +62,11 @@
                 {field:'numberofServers', title: '服务器台数', align:'center',hide:true},
                 {field:'networkAccess', title: '网络接入商', align:'center',hide:true,templet: function(d){
                         switch (d.networkAccess) {
-                            case "1":
-                                return "中国移动";
                             case "2":
-                                return "中国联通";
+                                return "中国移动";
                             case "3":
+                                return "中国联通";
+                            case "1":
                                 return "中国电信";
                         }
                     }},

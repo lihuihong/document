@@ -102,7 +102,7 @@
                     <div class="form-group">
                         <label for="rules" class="col-lg-3 col-sm-3 col-md-3 control-label">规章制度</label>
                         <div class="col-lg-9 col-sm-9 col-md-9">
-                            <input type="checkbox" class="js-switch" checked name="rules" id="rules"/>
+                            <input type="checkbox" class="js-switch" value="0" name="rules" id="rules"/>
                         </div>
                     </div>
                 </div>

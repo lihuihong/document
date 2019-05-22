@@ -76,11 +76,11 @@
                 {field:'networkAccess', title: '网络接入商', align:'center',hide:true,templet: function(d){
                         switch (d.networkAccess) {
                             case "1":
-                                return "中国移动";
-                            case "2":
-                                return "中国联通";
-                            case "3":
                                 return "中国电信";
+                            case "2":
+                                return "中国移动";
+                            case "3":
+                                return "中国联通";
                         }
                     }},
                 {field:'peopleEmployed', title: '从业人员数', align:'center',hide:true},

@@ -73,9 +73,9 @@
         <div class="layui-input-inline">
             <select name="networkAccess" id="networkAccess" lay-verify="required">
                 <option value="">--请选择网络接入商--</option>
-                <option value="1">中国移动</option>
-                <option value="2">中国联通</option>
-                <option value="3">中国电信</option>
+                <option value="1">中国电信</option>
+                <option value="2">中国移动</option>
+                <option value="3">中国联通</option>
             </select>
         </div>
     </div>

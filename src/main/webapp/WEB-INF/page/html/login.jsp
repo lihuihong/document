@@ -13,70 +13,63 @@
     <link href="/view/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="/resources/layui/css/layui.css">
     <style>
-        html, body {
-            height: 100%
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center
-        }
-
-        .login-wrap {
+        .form-login {
+            background-color: #fff !important;
             text-align: center;
-            color: #ff0000;
-            font-size: 12px
+            margin: 20% auto;
+            width: 400px;
+            border-radius: 5px;
+            padding: 60px 0px;
+
         }
 
-        .form-group {
-            margin-bottom: 10px;
+        .layui-input-block {
+            margin: 20px auto;
+            border-radius: 5px;
         }
 
-        .form-group input {
-            margin-bottom: 5px;
+        .layui-input {
+            border-radius: 50px;
+            text-indent: 20px;
         }
+        .register{display: block;position: relative}
+        .registration{position: absolute;left: 0px}
+        .admin1{position: absolute;right: 0px;}
+        .login-btn button{border-radius: 2px}
+        .layui-form-label{padding: 9px 4px}
+        .layui-layer-btn{text-align: center!important;}
 
-        .form-group {
-            height: 75px;
-            margin-bottom: 0px;
-        }
-
-        .form-group label {
-            margin-bottom: 0px !important;
-        }
     </style>
 </head>
 <body class="login-body">
 <div class="container">
-    <form class="layui-form" method="post">
+    <form class="layui-form form-login" method="post">
         <div class="form-signin-heading text-center">
             <h1 class="sign-title">登 录</h1>
             <img src="/view/images/login-logo.png" alt=""/>
         </div>
         <div class="login-wrap">
-            <div class="layui-input-inline">
+            <div class="layui-input-block">
                 <input type="text" name="name" required lay-verify="required" placeholder="用户名" autocomplete="off"
                        class="layui-input">
             </div>
-            <div class="layui-input-inline">
-                <input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off"
+            <div class="layui-input-block">
+                <input type="password" name="password" required lay-verify="required" placeholder="密码"
+                       autocomplete="off"
                        class="layui-input">
             </div>
             <p class="tips"></p>
             <div class="layui-input-inline login-btn">
-                <button lay-submit lay-filter="login" class="layui-btn">登录</button>
+                <button type="button" lay-submit lay-filter="login" class="layui-btn">登录</button>
+                <button type="button" class="layui-btn" id="personalPassword" class="layui-btn">注册</button>
             </div>
-            <div class="layui-input-inline login-btn">
-                <a id="personalPassword" class="layui-btn">注册</a>
-            </div>
-            <%--<button class="btn btn-lg btn-login btn-block" type="submit" id="submit"><i class="fa fa-check"></i>--%>
-            </button>
-            <div class="registration">
-                <a class="forget" href="#">忘记密码？</a>
-            </div>
-            <div class="admin1">
-                <a class="admin" href="#">后台管理</a>
+            <div class="register">
+                <div class="registration">
+                    <a class="forget" href="#" style="color: #6bc5a4">忘记密码？</a>
+                </div>
+                <div class="admin1" style="margin-top: 15px;">
+                    <a class="admin" href="#" style="color: #6bc5a4">后台管理</a>
+                </div>
             </div>
         </div>
     </form>
@@ -102,14 +95,14 @@
                 data: data.field,
                 success: function (data) {
                     if (data.code === 0) {
-                        if (data.data.type === "0"){
+                        if (data.data.type === "0") {
                             layer.msg("登录成功，正在跳转。。。")
                             window.location.href = "${pageContext.request.contextPath}/web/page/main";
                         } else {
                             layer.msg("登录成功，正在跳转。。。")
                             setTimeout(function () {
-                                window.location.href =   "${pageContext.request.contextPath}/typeInfo/typeListView";
-                            },2000)
+                                window.location.href = "${pageContext.request.contextPath}/typeInfo/typeListView";
+                            }, 2000)
                         }
                     } else {
                         layer.msg("账号或密码错误")
@@ -134,8 +127,8 @@
                             layer.close(index);
                             layer.msg(d.msg, {icon: 1});
                             setTimeout(function () {
-                                window.location.href =   "${pageContext.request.contextPath}/typeInfo/typeListView";
-                            },2000)
+                                window.location.href = "${pageContext.request.contextPath}/typeInfo/typeListView";
+                            }, 2000)
                         } else {
                             $('#tip').html(d.msg);
                         }
@@ -153,7 +146,7 @@
                     $('#tip').html('请输入有效字符');
                     $('#new2').focus();
                 } else {
-                    if (password != new2)  {
+                    if (password != new2) {
                         $('#tip').html('您输入的两次密码不一致！');
                         $('#new2').focus();
                         //return false;
@@ -166,7 +159,6 @@
             });
         });
     });
-
 
 
     //忘记密码
