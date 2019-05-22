@@ -27,7 +27,7 @@
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <img src="/view/images/photos/user-avatar.png" alt=""/>
-                        <span>系统管理员</span>
+                        <span>${sessionScope.userInfo.name}</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">

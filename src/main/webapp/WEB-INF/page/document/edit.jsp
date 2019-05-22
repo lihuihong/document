@@ -12,12 +12,12 @@
 </head>
 
 <body>
-<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px">
+<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px;text-align: center">
     <input type="hidden" name="id" id="id">
 
     <div class="layui-form-item">
         <label class="layui-form-label">所属分类</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <select name="typeInfoId" id="typeInfoId" lay-verify="required">
                 <option value="">--请选择分类--</option>
             </select>
@@ -25,33 +25,31 @@
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">消防编号</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="fireControl" id="fireControl" required lay-verify="required|number" placeholder="请输入消防编号" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">环保编号</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="environmentalProtection" id="environmentalProtection" lay-verify="required|number" placeholder="请输入环保编号" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">卫生编号</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="hygiene" id="hygiene"  lay-verify="required|number" placeholder="请输入卫生编号" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">工商编号</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="businessCircles" id="businessCircles"  lay-verify="required|number" placeholder="请输入工商编号" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-        </div>
     </div>
 </form>
 </body>

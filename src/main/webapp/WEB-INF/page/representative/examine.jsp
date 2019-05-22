@@ -12,11 +12,11 @@
 </head>
 
 <body>
-<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px">
+<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px;text-align: center">
     <input type="hidden" name="id" id="id">
     <div class="layui-form-item">
         <label class="layui-form-label">是否通过审核</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <select name="type" id="type" lay-verify="required">
                 <option value="2">--请选择--</option>
                 <option value="0">通过审核</option>
@@ -26,10 +26,8 @@
     </div>
 
     <div class="layui-form-item">
-        <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-        </div>
     </div>
 </form>
 </body>

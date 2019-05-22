@@ -25,12 +25,12 @@
             <ul class="notification-menu">
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <img src="/view/images/photos/user-avatar.png" alt=""/>
-                        <span>系统管理员</span>
+                        <%--<img src="/view/images/photos/user-avatar.png" alt=""/>--%>
+                        <span>${sessionScope.userInfo.name}</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                        <li><a href="index.jsp"><i class="fa fa-user"></i> 返回面板</a></li>
+                        <li><a href="/typeInfo/typeListView"><i class="fa fa-user"></i> 返回面板</a></li>
                         <li><a href="#" class="layout"><i class="fa fa-sign-out"></i> 退出登录</a></li>
                     </ul>
                 </li>

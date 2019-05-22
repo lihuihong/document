@@ -12,12 +12,12 @@
 </head>
 
 <body>
-<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px">
+<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px;text-align: center">
     <input type="hidden" name="id" id="id">
 
     <div class="layui-form-item">
         <label class="layui-form-label">所属分类</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <select name="typeInfoId" id="typeInfoId" lay-verify="required">
                 <option value="">--请选择分类--</option>
             </select>
@@ -25,77 +25,75 @@
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">警告次数</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="warning" id="warning" required lay-verify="required" placeholder="请输入警告次数" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">警告时间</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="warningTime" id="warningTime" lay-verify="required" placeholder="请输入警告时间" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">罚款</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="fine" id="fine"  lay-verify="required|number" placeholder="请输入罚款" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">罚款时间</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="fineTime" id="fineTime"  lay-verify="required" placeholder="请选择罚款时间" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">责令停业整顿</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="rectify" id="rectify"  lay-verify="required" placeholder="请输入责令停业整顿" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">责令停业整顿时间</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="rectifyTime" id="rectifyTime"  lay-verify="required" placeholder="请选择责令停业整顿时间" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">吊销许可证时间</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="revocationPermitTime" id="revocationPermitTime"  lay-verify="required" placeholder="请选择吊销许可证时间" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">没收违法所得</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="confiscationIncome" id="confiscationIncome"  lay-verify="required" placeholder="请输入没收违法所得" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">没收违法所得时间</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="confiscationIncomeTime" id="confiscationIncomeTime"  lay-verify="required" placeholder="请选择没收违法所得时间" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">没收非法财物</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="confiscationProperty" id="confiscationProperty"  lay-verify="required" placeholder="请输入没收非法财物" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">没收非法财物时间</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="confiscationPropertyTime" id="confiscationPropertyTime"  lay-verify="required" placeholder="请选择没收非法财物时间" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-        </div>
     </div>
 </form>
 </body>

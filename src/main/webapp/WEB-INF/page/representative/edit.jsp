@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px">
+<form class="layui-form" lay-filter="form" style="padding: 20px 50px 20px 20px;text-align: center">
     <input type="hidden" name="id" id="id">
     <div class="layui-form-item">
         <div class="layui-input-block">
@@ -31,13 +31,13 @@
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">姓名</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="name" id="name" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">所属分类</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <select name="typeInfoId" id="typeInfoId" lay-verify="required">
                 <option value="">--请选择分类--</option>
             </select>
@@ -45,7 +45,7 @@
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">性别</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <select name="sex" id="sex" lay-verify="required">
                 <option value="">--请选择性别--</option>
                 <option value="1">男</option>
@@ -55,20 +55,20 @@
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">出生年月</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="birth" id="birth"  lay-verify="required" placeholder="请选择出生年月" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">民族</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="translate" id="translate"  placeholder="请输入民族（默认为汉族）" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">政治面貌</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <select name="politicalOutlook" id="politicalOutlook" lay-verify="required">
                 <option value="">--请选择政治面貌--</option>
                 <option value="1">群众</option>
@@ -79,7 +79,7 @@
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">学历</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <select name="degree" id="degree" lay-verify="required">
                 <option value="">--请选择学历--</option>
                 <option value="1">小学</option>
@@ -91,34 +91,32 @@
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">住址</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="address" id="address"  lay-verify="required" placeholder="请输入住址" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">身份证号码</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="idcard" id="idcard"  lay-verify="required|number" placeholder="请输入身份证号码" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">座机</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="landline" id="landline"  lay-verify="required|number" placeholder="请输入座机" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">联系电话</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-block">
             <input type="text" name="phone" id="phone"  lay-verify="required|phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-        </div>
     </div>
 </form>
 </body>

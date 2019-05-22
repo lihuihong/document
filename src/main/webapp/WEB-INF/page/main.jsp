@@ -55,7 +55,7 @@
     <div class="layui-side">
         <div class="layui-side-scroll">
             <div class="layui-logo" lay-href="html/index.html">
-                <img src="/images/logo.png" style="width:40px;margin:10px"/>
+                <img src="/view/images/logo_icon.png" style="width:40px;margin:10px"/>
                 <span>管理系统</span>
             </div>
             <ul class="layui-nav layui-nav-tree" lay-filter="nav">
