@@ -22,6 +22,8 @@
     <link rel="stylesheet" type="text/css" href="/view/js/bootstrap-colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css" href="/view/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
     <link rel="stylesheet" type="text/css" href="/view/js/bootstrap-datetimepicker/css/datetimepicker-custom.css" />
+    <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/resources/css/login.css" media="all">
 </head>
 <body>
 <div class="row" style="margin: 0px;padding: 0px">
@@ -60,8 +62,8 @@
                     <div class="form-group">
                         <label for="revocationPermit" class="col-lg-3 col-sm-3 col-md-3 control-label" title="吊销许可证">吊销许可证</label>
                         <div class="col-lg-9 col-sm-9 col-md-9">
-                            <input type="checkbox" class="js-switch" id="revocationPermit" name="revocationPermit"
-                                   checked/>
+                            <input type="checkbox" class="js-switch" value="0" id="revocationPermit" name="revocationPermit"
+                                   />
                         </div>
                     </div>
                     <div class="form-group">
@@ -158,8 +160,30 @@
 
 <!--初始化时间控件-->
 <script src="/view/js/pickers-init.js"></script>
-<script src="/view/js/layer/layer.js"></script>
+<script src="/resources/layui/layui.js" charset="utf-8"></script>
 <script>
+    var  layer;
+    layui.use(['form', 'upload','laydate','layer'], function() {
+        var form = layui.form;
+        var $ = layui.jquery;
+        var upload = layui.upload;
+        var laydate = layui.laydate;
+        layer= layui.layer;
+        var uploadInst = upload.render({
+            elem: '#test1' //绑定元素
+            ,url:'/file/upload' //上传接口
+            ,accept: 'file'
+            ,before: function(obj){
+                layer.load(); //上传loading
+            }
+            ,done: function(res){
+                layer.closeAll('loading'); //关闭loading
+                //上传成功
+                document.getElementById("confiscationProperty").value = res.msg;//隐藏域保存文件路径
+                layer.msg("上传成功")
+            }
+        });
+
     $('#submit').on('click',function () {
         $.ajax({
             url:'/document/punishment/saveOrEdit',
@@ -234,6 +258,7 @@
             //do something
             layer.msg('与服务器连接失败',{icon: 2});
         }
+    });
     });
 </script>
 </body>

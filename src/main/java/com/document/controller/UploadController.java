@@ -1,5 +1,6 @@
 package com.document.controller;
 
+import com.document.entity.Result;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/file")
@@ -17,16 +20,24 @@ public class UploadController {
 
     @RequestMapping(value="/upload",method= RequestMethod.POST)
     @ResponseBody
-    public String upload(MultipartFile file, HttpServletRequest request) throws IOException {
-        String path = request.getSession().getServletContext().getRealPath("upload");  
-        String fileName = file.getOriginalFilename();    
-        File dir = new File(path,fileName);          
+    public Result upload(MultipartFile file, HttpServletRequest request) throws IOException {
+        Result result = new Result();
+        String path = request.getSession().getServletContext().getRealPath("upload");
+        String fileName = file.getOriginalFilename();
+        //时间格式化格式
+        SimpleDateFormat simpleDateFormat =new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        //获取当前时间并作为时间戳
+        String timeStamp=simpleDateFormat.format(new Date());
+        //获取后缀名
+        String sname = fileName.substring(fileName.lastIndexOf("."));
+        String name = timeStamp+sname;
+        File dir = new File(path,name);
         if(!dir.exists()){  
             dir.mkdirs();  
-        }  
-       
-        file.transferTo(dir);  
-        return fileName;  
+        }
+        file.transferTo(dir);
+        result.setSuccessMsg(name);
+        return result;
     }  
     
        @RequestMapping("/down")  
